@@ -1,17 +1,26 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:piktlab/lang.dart';
+import 'package:piktlab/constants/app_colors.dart';
+import 'package:piktlab/constants/lang.dart';
 
 // https://pub.dev/packages/bitsdojo_window
 
-class WindowTitleBar extends StatelessWidget {
+class Window extends StatelessWidget {
+
+  final Widget child;
+
+  Window({Key key, this.child}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Stack(
       children: [
-        _LeftSide(),
-        _RightSide(),
+        child,
+        WindowBorder(
+          color: Colors.transparent,
+          child: _WindowTitleBar(),
+        ),
       ],
     );
   }
@@ -24,6 +33,18 @@ class WindowTitleBar extends StatelessWidget {
       appWindow.maximize();
       appWindow.show();
     });
+  }
+}
+
+class _WindowTitleBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        _LeftSide(),
+        _RightSide(),
+      ],
+    );
   }
 }
 
@@ -66,17 +87,17 @@ class _RightSide extends StatelessWidget {
 class _WindowButtons extends StatelessWidget {
 
   final _buttonColors = WindowButtonColors(
-    iconNormal: Colors.white70,
-    iconMouseDown: Colors.white,
-    mouseOver: Colors.white70.withOpacity(.2),
-    mouseDown: Colors.white70.withOpacity(.4),
+    iconNormal: AppColors.TITLE_BAR_BUTTON.withOpacity(.8),
+    iconMouseDown: AppColors.TITLE_BAR_BUTTON,
+    mouseOver: AppColors.TITLE_BAR_BUTTON.withOpacity(.2),
+    mouseDown: AppColors.TITLE_BAR_BUTTON.withOpacity(.35),
   );
 
   final _closeButtonColors = WindowButtonColors(
-    iconNormal: Colors.white70,
-    iconMouseOver: Colors.white,
-    mouseOver: Color(0xFFD32F2F),
-    mouseDown: Color(0xFFB71C1C),
+    iconNormal: AppColors.TITLE_BAR_BUTTON.withOpacity(.8),
+    iconMouseOver: AppColors.TITLE_BAR_BUTTON,
+    mouseOver: AppColors.TITLE_BAR_CLOSE_OVER,
+    mouseDown: AppColors.TITLE_BAR_CLOSE_PRESSED,
   );
 
   @override

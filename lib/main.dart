@@ -1,12 +1,11 @@
-import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
-import 'package:piktlab/lang.dart';
+import 'package:piktlab/constants/lang.dart';
 import 'package:piktlab/ui/pages/landing_page.dart';
 import 'package:piktlab/ui/window_title_bar.dart';
 
 void main() {
   runApp(PiktLabApp());
-  WindowTitleBar.init();
+  Window.init(); // Custom window
 }
 
 class PiktLabApp extends StatelessWidget {
@@ -19,15 +18,9 @@ class PiktLabApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        body: Stack(
-          children: [
-            LandingPage(),
-            WindowBorder(
-              color: Colors.transparent,
-              child: WindowTitleBar(),
-            ),
-          ],
-        ),
+        body: Window(
+          child: LandingPage(),
+        )
       ),
     );
   }

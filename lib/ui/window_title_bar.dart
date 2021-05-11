@@ -25,10 +25,12 @@ class Window extends StatelessWidget {
     );
   }
 
+  /// Sets custom window via bitsdojo_window
   static void init() {
     doWhenWindowReady(() {
       appWindow.title = lang['title'];
       appWindow.size = Size(700, 500);
+      appWindow.minSize = appWindow.size;
       appWindow.alignment = Alignment.center;
       appWindow.maximize();
       appWindow.show();

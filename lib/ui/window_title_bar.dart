@@ -29,7 +29,7 @@ class Window extends StatelessWidget {
   static void init() {
     doWhenWindowReady(() {
       appWindow.title = lang['title'];
-      appWindow.size = Size(700, 500);
+      appWindow.size = Size(768, 432);
       appWindow.minSize = appWindow.size;
       appWindow.alignment = Alignment.center;
       appWindow.maximize();

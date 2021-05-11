@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/lang.dart';
 import 'package:piktlab/ui/pages/landing_page.dart';
 import 'package:piktlab/ui/window_title_bar.dart';
@@ -15,7 +16,8 @@ class PiktLabApp extends StatelessWidget {
       title: lang['title'],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: AppColors.BG_GRADIENT_1,
+        fontFamily: 'Karla',
       ),
       home: Scaffold(
         body: Window(

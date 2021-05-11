@@ -1,26 +1,21 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:piktlab/constants/app_colors.dart';
+import 'package:piktlab/constants/lang.dart';
+import 'package:piktlab/ui/utils/gradients.dart';
+import 'package:piktlab/ui/widgets/primary_button.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     return SizedBox.expand(
       child: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              AppColors.BG_GRADIENT_1,
-              AppColors.BG_GRADIENT_2,
-              AppColors.BG_GRADIENT_3,
-            ],
-            stops: [0, .6, 1],
-          ),
+          gradient: Gradients.bgGradient,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +23,14 @@ class LandingPage extends StatelessWidget {
           children: [
             SvgPicture.asset(
               "images/logo_light.svg",
-              width: MediaQuery.of(context).size.width / 3,
+              width: mediaQuery.size.width / 3,
+            ),
+            SizedBox(height: mediaQuery.size.height / 7),
+            PrimaryButton(
+              text: lang['landing.newscript'],
+              width: mediaQuery.size.width / 4.4,
+              height: mediaQuery.size.width / 17,
+              icon: Icons.add,
             ),
           ],
         ),

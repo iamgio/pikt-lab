@@ -6,25 +6,7 @@ import 'package:piktlab/constants/lang.dart';
 
 // https://pub.dev/packages/bitsdojo_window
 
-class Window extends StatelessWidget {
-
-  final Widget child;
-
-  Window({Key key, this.child}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        child,
-        WindowBorder(
-          color: Colors.transparent,
-          child: _WindowTitleBar(),
-        ),
-      ],
-    );
-  }
-
+class Window {
   /// Sets custom window via bitsdojo_window
   static void init() {
     doWhenWindowReady(() {
@@ -35,6 +17,28 @@ class Window extends StatelessWidget {
       appWindow.maximize();
       appWindow.show();
     });
+  }
+
+  static double get titleBarHeight => appWindow.titleBarHeight;
+}
+
+class WindowFrame extends StatelessWidget {
+
+  final Widget child;
+
+  WindowFrame({Key key, this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        WindowBorder(
+          color: Colors.transparent,
+          child: _WindowTitleBar(),
+        ),
+        child,
+      ],
+    );
   }
 }
 

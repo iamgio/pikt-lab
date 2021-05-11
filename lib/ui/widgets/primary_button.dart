@@ -26,7 +26,7 @@ class PrimaryButton extends StatelessWidget {
         textAlign: TextAlign.center,
         style: TextStyle(
           height: 1,
-          fontSize: 12,
+          fontSize: 14,
           color: textColor,
           fontWeight: FontWeight.bold,
         ),
@@ -37,6 +37,7 @@ class PrimaryButton extends StatelessWidget {
     return MaterialButton(
       onPressed: onPressed,
       color: Colors.transparent,
+      elevation: 0,
       child: Ink(
         decoration: BoxDecoration(
           gradient: Gradients.buttonGradient,

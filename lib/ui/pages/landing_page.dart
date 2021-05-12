@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:piktlab/constants/lang.dart';
+import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/ui/page.dart';
 import 'package:piktlab/ui/utils/gradients.dart';
 import 'package:piktlab/ui/widgets/primary_button.dart';
@@ -14,8 +15,8 @@ class LandingPage extends StatelessWidget {
 
   _buildPrimaryButton(MediaQueryData mediaQuery) => PrimaryButton(
         text: lang['landing.newscript'],
-        width: mediaQuery.size.width / 4.4,
-        height: mediaQuery.size.width / 17,
+        width: mediaQuery.size.width / UIConstants.landing_primary_button_width_factor,
+        height: mediaQuery.size.width / UIConstants.landing_primary_button_height_factor,
         icon: CupertinoIcons.add,
         onPressed: () {},
       );
@@ -36,9 +37,9 @@ class LandingPage extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   "images/logo_light.svg",
-                  width: mediaQuery.size.width / 3,
+                  width: mediaQuery.size.width / UIConstants.landing_logo_size_factor,
                 ),
-                SizedBox(height: mediaQuery.size.height / 7),
+                SizedBox(height: mediaQuery.size.height / UIConstants.landing_vertical_spacing_factor),
                 _buildPrimaryButton(mediaQuery),
               ],
             ),
@@ -46,7 +47,7 @@ class LandingPage extends StatelessWidget {
           Align(
             alignment: Alignment.topRight,
             child: Padding(
-              padding: EdgeInsets.only(right: 8),
+              padding: EdgeInsets.only(right: UIConstants.side_button_padding_right),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -57,7 +58,7 @@ class LandingPage extends StatelessWidget {
                   ),
                   SideButton(
                     icon: SvgPicture.asset("images/github.svg"),
-                    scaleFactor: .8,
+                    scaleFactor: UIConstants.side_button_secondary_scale_factor,
                     onPressed: () {},
                   )
                 ],

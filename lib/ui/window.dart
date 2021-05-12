@@ -93,17 +93,17 @@ class _RightSide extends StatelessWidget {
 class _WindowButtons extends StatelessWidget {
 
   final _buttonColors = WindowButtonColors(
-    iconNormal: AppColors.TITLE_BAR_BUTTON.withOpacity(.8),
-    iconMouseDown: AppColors.TITLE_BAR_BUTTON,
-    mouseOver: AppColors.TITLE_BAR_BUTTON.withOpacity(.2),
-    mouseDown: AppColors.TITLE_BAR_BUTTON.withOpacity(.35),
+    iconNormal: AppColors.title_bar_button.withOpacity(.8),
+    iconMouseDown: AppColors.title_bar_button,
+    mouseOver: AppColors.title_bar_button.withOpacity(.2),
+    mouseDown: AppColors.title_bar_button.withOpacity(.35),
   );
 
   final _closeButtonColors = WindowButtonColors(
-    iconNormal: AppColors.TITLE_BAR_BUTTON.withOpacity(.8),
-    iconMouseOver: AppColors.TITLE_BAR_BUTTON,
-    mouseOver: AppColors.TITLE_BAR_CLOSE_OVER,
-    mouseDown: AppColors.TITLE_BAR_CLOSE_PRESSED,
+    iconNormal: AppColors.title_bar_button.withOpacity(.8),
+    iconMouseOver: AppColors.title_bar_button,
+    mouseOver: AppColors.title_bar_close_over,
+    mouseDown: AppColors.title_bar_close_pressed,
   );
 
   @override

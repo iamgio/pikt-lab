@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:piktlab/constants/app_colors.dart';
+import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/ui/utils/blend_mask.dart';
 
 class SideButton extends StatefulWidget {
@@ -21,7 +22,7 @@ class _SideButtonState extends State<SideButton> {
   @override
   Widget build(BuildContext context) {
     return BlendMask(
-      opacity: _isHover ? 1 : .7,
+      opacity: _isHover ? 1 : UIConstants.side_button_opacity,
       blendMode: BlendMode.overlay,
       child: MouseRegion(
         onEnter: (e) {
@@ -35,8 +36,8 @@ class _SideButtonState extends State<SideButton> {
           });
         },
         child: IconButton(
-          iconSize: MediaQuery.of(context).size.width * widget.scaleFactor / 25,
-          color: AppColors.LANDING_PAGE_SIDE_BUTTONS,
+          iconSize: MediaQuery.of(context).size.width * widget.scaleFactor / UIConstants.side_button_size_factor,
+          color: AppColors.landing_side_buttons,
           onPressed: widget.onPressed,
           icon: widget.icon,
         ),

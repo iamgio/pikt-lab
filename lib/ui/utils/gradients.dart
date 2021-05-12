@@ -9,9 +9,9 @@ class Gradients {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppColors.BG_GRADIENT_1,
-          AppColors.BG_GRADIENT_2,
-          AppColors.BG_GRADIENT_3,
+          AppColors.landing_bg_gradient_1,
+          AppColors.landing_bg_gradient_2,
+          AppColors.landing_bg_gradient_3,
         ],
         stops: [0, .6, 1],
       );
@@ -20,8 +20,8 @@ class Gradients {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppColors.PRIMARY_BUTTON_GRADIENT_1,
-          AppColors.PRIMARY_BUTTON_GRADIENT_2
+          AppColors.primary_button_gradient_1,
+          AppColors.primary_button_gradient_2
         ],
       );
 }

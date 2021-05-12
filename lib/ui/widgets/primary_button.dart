@@ -39,6 +39,11 @@ class PrimaryButton extends StatelessWidget {
       onPressed: onPressed,
       color: Colors.transparent,
       elevation: 0,
+      hoverElevation: 0,
+      highlightElevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UIConstants.primary_button_border_radius),
+      ),
       child: Ink(
         decoration: BoxDecoration(
           gradient: Gradients.buttonGradient,

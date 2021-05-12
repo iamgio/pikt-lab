@@ -14,12 +14,12 @@ class LandingPage extends StatelessWidget {
   const LandingPage({Key key}) : super(key: key);
 
   _buildPrimaryButton(MediaQueryData mediaQuery) => PrimaryButton(
-        text: lang['landing.newscript'],
-        width: mediaQuery.size.width / UIConstants.landing_primary_button_width_factor,
-        height: mediaQuery.size.width / UIConstants.landing_primary_button_height_factor,
-        icon: CupertinoIcons.add,
-        onPressed: () {},
-      );
+    text: lang['landing.newscript'],
+    width: mediaQuery.size.width / UIConstants.landing_primary_button_width_factor,
+    height: mediaQuery.size.width / UIConstants.landing_primary_button_height_factor,
+    icon: CupertinoIcons.add,
+    onPressed: () {},
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,6 @@ class LandingPage extends StatelessWidget {
           SizedBox.expand(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 SvgPicture.asset(
                   "images/logo_light.svg",

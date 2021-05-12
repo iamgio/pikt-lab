@@ -11,10 +11,9 @@ class Window {
   static void init() {
     doWhenWindowReady(() {
       appWindow.title = lang['title'];
-      appWindow.size = Size(768, 432);
-      appWindow.minSize = appWindow.size;
+      appWindow.size = Size(1280, 720);
+      appWindow.minSize = Size(768, 432);
       appWindow.alignment = Alignment.center;
-      appWindow.maximize();
       appWindow.show();
     });
   }

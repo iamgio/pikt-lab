@@ -13,7 +13,7 @@ class AppColors {
   static const BG_GRADIENT_2 = Color(0xFF2E3F5A);
   static const BG_GRADIENT_3 = Color(0xFF141C29);
 
-  static const LANDING_PAGE_LIGHT = Colors.white;
+  static const LANDING_PAGE_SIDE_BUTTONS = Colors.white;
 
   static const PRIMARY_BUTTON_GRADIENT_1 = Color(0xFF72E0ED);
   static const PRIMARY_BUTTON_GRADIENT_2 = Color.fromARGB(140, 112, 222, 235);

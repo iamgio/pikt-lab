@@ -7,4 +7,4 @@ Currently Windows only.
 
 ![Landing](https://i.imgur.com/oylceCd.png)
 
-![Workspace](https://i.imgur.com/pnHxGHK.png)
+![Workspace](https://i.imgur.com/wlj3gpg.png)

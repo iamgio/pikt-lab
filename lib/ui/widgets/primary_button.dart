@@ -46,7 +46,7 @@ class PrimaryButton extends StatelessWidget {
       ),
       child: Ink(
         decoration: BoxDecoration(
-          gradient: Gradients.buttonGradient,
+          gradient: Gradients.primaryButtonGradient,
           borderRadius: BorderRadius.circular(UIConstants.primary_button_border_radius),
         ),
         child: Container(

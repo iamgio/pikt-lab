@@ -5,7 +5,7 @@ import 'package:piktlab/constants/app_colors.dart';
 class Gradients {
   Gradients._();
 
-  static LinearGradient get bgGradient => LinearGradient(
+  static LinearGradient get landingBgGradient => LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
@@ -16,7 +16,18 @@ class Gradients {
         stops: [0, .6, 1],
       );
 
-  static LinearGradient get buttonGradient => LinearGradient(
+  static LinearGradient get workspaceBgGradient => LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      AppColors.workspace_bg_gradient_1,
+      AppColors.workspace_bg_gradient_2,
+      AppColors.workspace_bg_gradient_3,
+    ],
+    stops: [0, .6, 1],
+  );
+
+  static LinearGradient get primaryButtonGradient => LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [

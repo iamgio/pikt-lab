@@ -6,7 +6,7 @@ import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/lang.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/model/recent_project.dart';
-import 'package:piktlab/ui/page.dart';
+import 'package:piktlab/ui/pages/page.dart';
 import 'package:piktlab/ui/utils/gradients.dart';
 import 'package:piktlab/ui/widgets/primary_button.dart';
 import 'package:piktlab/ui/widgets/recent_projects_panel.dart';
@@ -18,36 +18,33 @@ class LandingPage extends StatelessWidget {
 
   _buildPrimaryButton(MediaQueryData mediaQuery) => PrimaryButton(
         text: lang['landing.newscript'],
-        width: mediaQuery.size.width /
-            UIConstants.landing_primary_button_width_factor,
-        height: mediaQuery.size.width /
-            UIConstants.landing_primary_button_height_factor,
+        width: mediaQuery.size.width / UIConstants.landing_primary_button_width_factor,
+        height: mediaQuery.size.width / UIConstants.landing_primary_button_height_factor,
         icon: CupertinoIcons.add,
         onPressed: () {},
       );
 
   _buildSideButtons() => Align(
-    alignment: Alignment.topRight,
-    child: Padding(
-      padding:
-      EdgeInsets.only(right: UIConstants.side_button_padding_right),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: Window.titleBarHeight),
-          SideButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {},
+        alignment: Alignment.topRight,
+        child: Padding(
+          padding: EdgeInsets.only(right: UIConstants.side_button_padding_right),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: Window.titleBarHeight),
+              SideButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {},
+              ),
+              SideButton(
+                icon: SvgPicture.asset("images/github.svg"),
+                scaleFactor: UIConstants.side_button_secondary_scale_factor,
+                onPressed: () {},
+              )
+            ],
           ),
-          SideButton(
-            icon: SvgPicture.asset("images/github.svg"),
-            scaleFactor: UIConstants.side_button_secondary_scale_factor,
-            onPressed: () {},
-          )
-        ],
-      ),
-    ),
-  );
+        ),
+      );
 
   _buildOpenButton() => Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -57,19 +54,14 @@ class LandingPage extends StatelessWidget {
             lang['landing.or'],
             style: TextStyle(
               fontSize: UIConstants.landing_open_font_size,
-              color: AppColors.landing_open
-                  .withOpacity(UIConstants.landing_or_opacity),
+              color: AppColors.landing_open.withOpacity(UIConstants.landing_or_opacity),
             ),
           ),
           TextButton(
             onPressed: () {},
             child: Text(
               lang['landing.open'],
-              style: TextStyle(
-                fontSize: UIConstants.landing_open_font_size,
-                color: AppColors.landing_open,
-                fontWeight: FontWeight.bold
-              ),
+              style: TextStyle(fontSize: UIConstants.landing_open_font_size, color: AppColors.landing_open, fontWeight: FontWeight.bold),
             ),
           ),
           SizedBox(width: 2),
@@ -82,7 +74,7 @@ class LandingPage extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     return new UIPage(
       decoration: BoxDecoration(
-        gradient: Gradients.bgGradient,
+        gradient: Gradients.landingBgGradient,
       ),
       child: Stack(
         children: [
@@ -92,12 +84,9 @@ class LandingPage extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   "images/logo_light.svg",
-                  width: mediaQuery.size.width /
-                      UIConstants.landing_logo_size_factor,
+                  width: mediaQuery.size.width / UIConstants.landing_logo_size_factor,
                 ),
-                SizedBox(
-                    height: mediaQuery.size.height /
-                        UIConstants.landing_vertical_spacing_factor),
+                SizedBox(height: mediaQuery.size.height / UIConstants.landing_vertical_spacing_factor),
                 _buildPrimaryButton(mediaQuery),
                 SizedBox(height: 16),
                 _buildOpenButton(),
@@ -105,7 +94,9 @@ class LandingPage extends StatelessWidget {
             ),
           ),
           _buildSideButtons(),
-          RecentProjectsPanel(projects: [RecentProject(name: "Fibonacci", subtitle: "2 hours ago"), RecentProject(name: "Prime numbers", subtitle: "3 hours ago")],),
+          RecentProjectsPanel(
+            projects: [RecentProject(name: "Fibonacci", subtitle: "2 hours ago"), RecentProject(name: "Prime numbers", subtitle: "3 hours ago")],
+          ),
         ],
       ),
     );

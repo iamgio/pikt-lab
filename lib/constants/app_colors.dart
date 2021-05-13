@@ -22,4 +22,11 @@ class AppColors {
   static const primary_button_gradient_1 = Color(0xFF7BCCD7);
   static const primary_button_gradient_2 = Color.fromARGB(180, 113, 195, 214);
   static const primary_button_text = Colors.white;
+
+  static const workspace_bg_gradient_1 = Color(0xFF184449);
+  static const workspace_bg_gradient_2 = Color(0xFF232F43);
+  static const workspace_bg_gradient_3 = Color(0xFF080C11);
+
+  static const workspace_primary = Color(0xFF1A2434);
+  static const workspace_toolbar = Color(0xFF141C29);
 }

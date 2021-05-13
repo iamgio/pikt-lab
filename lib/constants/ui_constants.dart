@@ -5,6 +5,8 @@ class UIConstants {
 
   static const font_family = 'Karla';
 
+  // Landing page
+
   static const landing_logo_size_factor = 3;
   static const landing_vertical_spacing_factor = 7;
   static const landing_primary_button_width_factor = 5;
@@ -33,4 +35,9 @@ class UIConstants {
   static const side_button_size_factor = 25;
   static const side_button_padding_right = recent_projects_padding;
   static const side_button_secondary_scale_factor = .8;
+
+  // Workspace
+
+  static const workspace_title_bar_padding_bottom = 15.0;
+  static const toolbar_width = 85.0;
 }

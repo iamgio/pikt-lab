@@ -17,6 +17,7 @@ class AppColors {
   static const landing_recent_projects_bg = Color.fromARGB(80, 0, 0, 0);
   static const landing_recent_projects_text = Colors.white;
   static const landing_recent_projects_hover_bg = Colors.black;
+  static const landing_open = primary_button_text;
 
   static const primary_button_gradient_1 = Color(0xFF7BCCD7);
   static const primary_button_gradient_2 = Color.fromARGB(180, 113, 195, 214);

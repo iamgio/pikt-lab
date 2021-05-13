@@ -9,6 +9,9 @@ class UIConstants {
   static const landing_vertical_spacing_factor = 7;
   static const landing_primary_button_width_factor = 5;
   static const landing_primary_button_height_factor = 20;
+  static const landing_open_font_size = 17.0;
+  static const landing_open_icon_size = 15.0;
+  static const landing_or_opacity = .6;
 
   static const recent_projects_spacing = 16.0;
   static const recent_projects_width_factor = 4.2;
@@ -28,6 +31,6 @@ class UIConstants {
 
   static const side_button_opacity = .7;
   static const side_button_size_factor = 25;
-  static const side_button_padding_right = 8.0;
+  static const side_button_padding_right = recent_projects_padding;
   static const side_button_secondary_scale_factor = .8;
 }

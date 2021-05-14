@@ -22,9 +22,11 @@ class _ToolbarState extends State<Toolbar> {
     return [
       ToolbarButton.svg(tool: Tool.pencil, icon: 'pencil'),
       _buildButtonSpacer(),
-      ToolbarButton.svg(tool: Tool.eraser, icon: 'eraser'),
+      SizedBox(height: 5),
+      ToolbarColorPicker(),
+      SizedBox(height: 5),
       _buildButtonSpacer(),
-      ColorPicker(),
+      ToolbarButton.svg(tool: Tool.eraser, icon: 'eraser'),
       _buildButtonSpacer(),
       ToolbarButton.svg(tool: Tool.picker, icon: 'color_picker'),
       _buildSectionSpacer(),

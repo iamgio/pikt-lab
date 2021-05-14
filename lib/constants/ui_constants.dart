@@ -47,6 +47,23 @@ class UIConstants {
   static const toolbar_icon_padding = 8.0;
   static const toolbar_buttons_spacing = 16.0;
   static const toolbar_sections_spacing = 65.0;
-  static const toolbar_color_picker_radius = 56.0;
+  static const toolbar_color_picker_size = 56.0;
   static const toolbar_color_picker_border_width = 3.0;
+
+  static const color_picker_offset_x = 20.0;
+  static const color_picker_height = 250.0;
+  static const color_picker_padding = 28.0;
+  static const color_picker_radius = 24.0;
+  static const color_picker_area_size = 200.0;
+  static const color_picker_slider_width = 40.0;
+  static const color_picker_slider_height = 30.0;
+  static const color_picker_blur = 15.0;
+  static const color_picker_horizontal_spacing = 16.0;
+  static const color_picker_hex_font_size = 20.0;
+  static const color_picker_hex_width = 100.0;
+  static const color_picker_hex_prefix_opacity = .5;
+  static const color_picker_hex_border_opacity = .1;
+  static const color_picker_hex_border_width = .5;
+  static const color_picker_hex_border_radius = 12.0;
+  static const color_picker_animation_duration = 70;
 }

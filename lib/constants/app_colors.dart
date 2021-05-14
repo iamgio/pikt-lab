@@ -34,4 +34,6 @@ class AppColors {
   static const toolbar_color_picker_border = Color(0xFFD0D2D4);
 
   static const color_picker_default = Color(0xFFDE9696);
+  static const color_picker = Color.fromARGB(178, 26, 36, 52);
+  static const color_picker_text = Colors.white;
 }

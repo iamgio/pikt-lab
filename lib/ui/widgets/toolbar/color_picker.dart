@@ -75,40 +75,42 @@ class ColorPickerOverlay extends StatefulWidget {
 }
 
 class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
-  HSVColor _color;
+  Color _color;
+  HSVColor _hsvColor;
 
   TextEditingController _hexController;
   String _lastValidHex; // Takes _hexController value only if its length is either 6 or 7.
 
-  set color(HSVColor value) {
-    _hexController.text = _setColorWithoutTextfieldUpdate(value).hex;
+  _setColor(Color value, [HSVColor hsvColor]) {
+    _setColorWithoutTextfieldUpdate(value, hsvColor);
+    _hexController.text = value.hex;
   }
 
-  Color _setColorWithoutTextfieldUpdate(HSVColor value) {
+  _setColorWithoutTextfieldUpdate(Color value, [HSVColor hsvColor]) {
     setState(() {
       _color = value;
+      _hsvColor = hsvColor ?? HSVColor.fromColor(value);
     });
-    final color = value.toColor();
-    widget.onColorChanged(color);
-    return color;
+    widget.onColorChanged(value);
   }
 
   @override
   void initState() {
-    _color = HSVColor.fromColor(widget.initialColor);
+    _color = widget.initialColor;
+    _hsvColor = HSVColor.fromColor(_color);
     _lastValidHex = widget.initialColor.hex;
     _initHexController();
     super.initState();
   }
 
   _initHexController() {
-    _hexController = TextEditingController(text: _color.toColor().hex)
+    _hexController = TextEditingController(text: _color.hex)
       ..addListener(() {
-        if (_hexController.text != _color.toColor().hex) {
+        if (_hexController.text != _color.hex) {
           if(_hexController.text.length == 6 || _hexController.text.length == 7) {
             _lastValidHex = _hexController.text;
           }
-          _setColorWithoutTextfieldUpdate(HSVColor.fromColor(HexColor.fromHex(_lastValidHex)));
+          _setColorWithoutTextfieldUpdate(HexColor.fromHex(_lastValidHex));
         }
       });
   }
@@ -121,10 +123,10 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
         width: UIConstants.color_picker_area_size,
         height: UIConstants.color_picker_area_size,
         child: ColorPickerArea(
-          _color,
+          _hsvColor,
           (color) {
             FocusScope.of(context).unfocus();
-            this.color = color;
+            _setColor(color.toColor(), color);
           },
           PaletteType.hsv,
         ),
@@ -137,10 +139,10 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
       quarterTurns: -1,
       child: ColorPickerSlider(
         TrackType.hue,
-        _color,
+        _hsvColor,
         (color) {
           FocusScope.of(context).unfocus();
-          this.color = color;
+          _setColor(color.toColor(), color);
         },
         fullThumbColor: true,
         displayThumbColor: true,
@@ -168,30 +170,76 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
     );
   }
 
+  _buildHex() {
+    return Row(
+      children: [
+        Text(
+          '#  ',
+          style: _textStyle.copyWith(
+            fontSize: UIConstants.color_picker_hex_font_size,
+            height: 0,
+            color: AppColors.color_picker_text.withOpacity(
+              UIConstants.color_picker_hex_prefix_opacity,
+            ),
+          ),
+        ),
+        Column(
+          children: [
+            SizedBox(
+              width: UIConstants.color_picker_hex_width,
+              child: _buildHexField(),
+            ),
+            SizedBox(height: UIConstants.color_picker_preview_height),
+            Container(
+              width: UIConstants.color_picker_preview_width,
+              height: UIConstants.color_picker_preview_height,
+              decoration: BoxDecoration(
+                color: _color,
+                borderRadius: BorderRadius.circular(32),
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  _buildRGBValues() {
+    final style = _textStyle.copyWith(fontSize: UIConstants.color_picker_rgb_font_size, height: 1.3);
+    _buildPair(String first, Object second) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: UIConstants.color_picker_rgb_width,
+            child: Text(
+              first,
+              style: style.copyWith(color: AppColors.color_picker_text.withOpacity(UIConstants.color_picker_rgb_opacity)),
+            ),
+          ),
+          Text(second.toString(), style: style),
+        ],
+      );
+    }
+
+    return [
+      _buildPair('R', _color.red),
+      _buildPair('G', _color.green),
+      _buildPair('B', _color.blue),
+    ];
+  }
+
   _buildRGBPicker() => Row(
         children: [
           _buildPickerArea(),
           _buildSlider(),
           SizedBox(width: UIConstants.color_picker_horizontal_spacing),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Text(
-                    '#  ',
-                    style: _textStyle.copyWith(
-                      fontSize: UIConstants.color_picker_hex_font_size,
-                      color: AppColors.color_picker_text.withOpacity(
-                        UIConstants.color_picker_hex_prefix_opacity,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: UIConstants.color_picker_hex_width,
-                    child: _buildHexField(),
-                  )
-                ],
-              ),
+              _buildHex(),
+              Spacer(),
+              ..._buildRGBValues(),
             ],
           ),
         ],

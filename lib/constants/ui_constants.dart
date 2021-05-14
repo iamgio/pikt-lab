@@ -57,13 +57,18 @@ class UIConstants {
   static const color_picker_area_size = 200.0;
   static const color_picker_slider_width = 40.0;
   static const color_picker_slider_height = 30.0;
-  static const color_picker_blur = 15.0;
+  static const color_picker_blur = 12.0;
   static const color_picker_horizontal_spacing = 16.0;
   static const color_picker_hex_font_size = 20.0;
   static const color_picker_hex_width = 100.0;
-  static const color_picker_hex_prefix_opacity = .5;
+  static const color_picker_hex_prefix_opacity = .3;
   static const color_picker_hex_border_opacity = .1;
   static const color_picker_hex_border_width = .5;
   static const color_picker_hex_border_radius = 12.0;
+  static const color_picker_preview_width = color_picker_hex_width - 15.0;
+  static const color_picker_preview_height = 5.0;
+  static const color_picker_rgb_font_size = 17.0;
+  static const color_picker_rgb_width = 22.0;
+  static const color_picker_rgb_opacity = color_picker_hex_prefix_opacity;
   static const color_picker_animation_duration = 70;
 }

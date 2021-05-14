@@ -8,8 +8,8 @@ class ColorScheme {
 
   final Properties _properties;
 
-  ColorScheme.read(String path)
-    : _properties = Properties.loadString(File(path).readAsStringSync());
+  ColorScheme.read(String path) :
+        _properties = Properties.loadString(File(path).readAsStringSync());
 
   String operator [](String key) => _properties[key];
 

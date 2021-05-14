@@ -29,4 +29,9 @@ class AppColors {
 
   static const workspace_primary = Color(0xFF1A2434);
   static const workspace_toolbar = Color(0xFF141C29);
+
+  static const toolbar_icon = Colors.white;
+  static const toolbar_color_picker_border = Color(0xFFD0D2D4);
+
+  static const color_picker_default = Color(0xFFDE9696);
 }

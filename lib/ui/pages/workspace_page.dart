@@ -3,7 +3,7 @@ import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/ui/pages/page.dart';
 import 'package:piktlab/ui/utils/gradients.dart';
-import 'package:piktlab/ui/widgets/toolbar.dart';
+import 'package:piktlab/ui/widgets/toolbar/toolbar.dart';
 
 class WorkspacePage extends StatelessWidget {
   const WorkspacePage({Key key}) : super(key: key);

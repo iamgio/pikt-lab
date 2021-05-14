@@ -38,6 +38,15 @@ class UIConstants {
 
   // Workspace
 
-  static const workspace_title_bar_padding_bottom = 15.0;
-  static const toolbar_width = 85.0;
+  static const workspace_title_bar_padding_bottom = 24.0;
+
+  static const toolbar_width = 100.0;
+  static const toolbar_icon_size = 32.0;
+  static const toolbar_icon_hover_opacity = .1;
+  static const toolbar_margin_top = 30.0 - toolbar_icon_padding;
+  static const toolbar_icon_padding = 8.0;
+  static const toolbar_buttons_spacing = 16.0;
+  static const toolbar_sections_spacing = 65.0;
+  static const toolbar_color_picker_radius = 56.0;
+  static const toolbar_color_picker_border_width = 3.0;
 }

@@ -65,6 +65,7 @@ class UIConstants {
   static const color_picker_hex_border_opacity = .1;
   static const color_picker_hex_border_width = .5;
   static const color_picker_hex_border_radius = 12.0;
+  static const color_picker_hex_cursor_width = .5;
   static const color_picker_preview_width = color_picker_hex_width - 15.0;
   static const color_picker_preview_height = 5.0;
   static const color_picker_rgb_font_size = 17.0;

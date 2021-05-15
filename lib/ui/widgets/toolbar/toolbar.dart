@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/ui_constants.dart';
-import 'package:piktlab/ui/tools/tools.dart';
+import 'package:piktlab/tools/tools.dart';
 import 'package:piktlab/ui/widgets/toolbar/color_picker.dart';
 import 'package:piktlab/ui/widgets/toolbar/toolbar_button.dart';
 

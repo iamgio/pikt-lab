@@ -5,7 +5,8 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/pikt/color_scheme.dart';
-import 'package:piktlab/ui/tools/tools.dart';
+import 'package:piktlab/tools/tools.dart';
+import 'package:piktlab/ui/utils/overlay.dart';
 
 class ToolbarColorPicker extends StatefulWidget {
   const ToolbarColorPicker({Key key}) : super(key: key);
@@ -19,24 +20,19 @@ class _ToolbarColorPickerState extends State<ToolbarColorPicker> {
   OverlayEntry _pickerOverlay;
 
   _buildFloatingPickerPopup() {
-    RenderBox renderBox = context.findRenderObject();
-    Offset offset = renderBox.localToGlobal(Offset.zero);
-    return OverlayEntry(
-      builder: (context) {
-        return Positioned(
-          left: offset.dx + UIConstants.color_picker_offset_x,
-          top: offset.dy,
-          child: ColorPickerOverlay(
-            initialColor: _color,
-            onColorChanged: (color) {
-              setState(() {
-                _color = color;
-              });
-              currentColor = color;
-            },
-          ),
-        );
+    final picker = ColorPickerOverlay(
+      initialColor: _color,
+      onColorChanged: (color) {
+        setState(() {
+          _color = color;
+        });
+        currentColor = color;
       },
+    );
+    return CloseableOverlay().buildOverlay(
+      context,
+      child: picker,
+      offset: Offset(UIConstants.color_picker_offset_x, 0),
     );
   }
 
@@ -78,6 +74,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
   Color _color;
   HSVColor _hsvColor;
 
+  FocusNode _focus = FocusNode();
   TextEditingController _hexController;
   String _lastValidHex; // Takes _hexController value only if its length is either 6 or 7.
 
@@ -91,6 +88,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
       _color = value;
       _hsvColor = hsvColor ?? HSVColor.fromColor(value);
     });
+    tool = Tool.pencil;
     widget.onColorChanged(value);
   }
 
@@ -160,13 +158,16 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
     );
     return TextField(
       controller: _hexController,
+      focusNode: _focus,
       style: _textStyle.copyWith(fontSize: UIConstants.color_picker_hex_font_size),
       cursorColor: AppColors.color_picker_text,
+      cursorWidth: UIConstants.color_picker_hex_cursor_width,
       decoration: InputDecoration(
         border: border,
         enabledBorder: border,
         focusedBorder: border,
       ),
+      onSubmitted: (text) => closeOverlays(),
     );
   }
 
@@ -247,6 +248,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
 
   @override
   Widget build(BuildContext context) {
+    FocusScope.of(context).requestFocus(_focus);
     return Material(
       color: Colors.transparent,
       child: ClipRRect(

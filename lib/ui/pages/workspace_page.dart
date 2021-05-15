@@ -3,6 +3,7 @@ import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/ui/pages/page.dart';
 import 'package:piktlab/ui/utils/gradients.dart';
+import 'package:piktlab/ui/utils/overlay.dart';
 import 'package:piktlab/ui/widgets/toolbar/toolbar.dart';
 
 class WorkspacePage extends StatelessWidget {
@@ -16,10 +17,13 @@ class WorkspacePage extends StatelessWidget {
       ),
       titleBarColor: AppColors.workspace_primary,
       titleBarPaddingBottom: UIConstants.workspace_title_bar_padding_bottom,
-      child: Stack(
-        children: [
-          Toolbar()
-        ],
+      child: GestureDetector(
+        onTap: closeOverlays,
+        child: Row(
+          children: [
+            Toolbar()
+          ],
+        ),
       ),
     );
   }

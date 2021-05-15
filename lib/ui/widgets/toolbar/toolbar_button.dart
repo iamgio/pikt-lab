@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/ui_constants.dart';
-import 'package:piktlab/ui/tools/tools.dart';
+import 'package:piktlab/tools/tools.dart';
+import 'package:piktlab/ui/utils/overlay.dart';
 
 class ToolbarButton extends StatefulWidget {
   final Tool tool;
@@ -65,6 +66,7 @@ class _ToolbarButtonState extends State<ToolbarButton> {
                 _isSelected ^= true;
                 if(!widget.isIndependentSelection) tool = _isSelected ? widget.tool : Tool.none;
                 widget.onSelected?.call(_isSelected);
+                closeOverlays();
               });
             },
             padding: EdgeInsets.all(UIConstants.toolbar_icon_padding),

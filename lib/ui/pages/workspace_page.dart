@@ -27,11 +27,11 @@ class WorkspacePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Toolbar(),
-            SizedBox(width: 12),
+            SizedBox(width: UIConstants.canvas_spacing_left),
             FutureBuilder(
               future: PiktImage.read(File('path')),
               builder: (context, snapshot) {
-                return snapshot.hasData ? PiktImagePreview(image: snapshot.data, scale: 1) : Container();
+                return snapshot.hasData ? PiktImagePreview(image: snapshot.data) : Container();
               },
             ),
           ],

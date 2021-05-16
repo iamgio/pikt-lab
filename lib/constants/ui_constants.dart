@@ -72,4 +72,8 @@ class UIConstants {
   static const color_picker_rgb_width = 22.0;
   static const color_picker_rgb_opacity = color_picker_hex_prefix_opacity;
   static const color_picker_animation_duration = 70;
+
+  static const canvas_spacing_left = 20.0;
+  static const canvas_pixel_size = 10.0;
+  static const canvas_zoom_factor = 40.0;
 }

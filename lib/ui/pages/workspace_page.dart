@@ -29,7 +29,7 @@ class WorkspacePage extends StatelessWidget {
             Toolbar(),
             SizedBox(width: UIConstants.canvas_spacing_left),
             FutureBuilder(
-              future: PiktImage.read(File('path')),
+              future: PiktImage.read(File('D:\\Coding\\Java Projects\\testing\\pikt2_test\\primes_standardecompacted.png')),
               builder: (context, snapshot) {
                 return snapshot.hasData ? PiktImagePreview(image: snapshot.data) : Container();
               },

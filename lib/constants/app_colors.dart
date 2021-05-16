@@ -36,4 +36,6 @@ class AppColors {
   static const color_picker_default = Color(0xFFDE9696);
   static const color_picker = Color.fromARGB(178, 26, 36, 52);
   static const color_picker_text = Colors.white;
+
+  static const grid = Color(0xFF404040);
 }

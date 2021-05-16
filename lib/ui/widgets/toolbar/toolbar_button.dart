@@ -64,7 +64,11 @@ class _ToolbarButtonState extends State<ToolbarButton> {
             onPressed: () {
               setState(() {
                 _isSelected ^= true;
-                if(!widget.isIndependentSelection) tool = _isSelected ? widget.tool : Tool.none;
+                if(!widget.isIndependentSelection) {
+                  tool = _isSelected ? widget.tool : Freehand();
+                }
+                widget.tool.isActive = _isSelected;
+                widget.tool.onToggle();
                 widget.onSelected?.call(_isSelected);
                 closeOverlays();
               });

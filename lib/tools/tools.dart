@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:piktlab/constants/app_colors.dart';
 
 // Tool
 
 /// Current tool.
-Tool _tool = Tool.none;
+Tool _tool = Freehand();
 
 /// Current tool
 Tool get tool => _tool;
@@ -45,12 +45,57 @@ void addColorListener(ValueChanged<Color> listener) {
   _colorListeners.add(listener);
 }
 
-enum Tool {
-  none,
-  pencil,
-  eraser,
-  picker,
-  string,
-  resize,
-  grid,
+abstract class Tool extends ChangeNotifier {
+  bool _isActive = false;
+  bool get isActive => _isActive;
+
+  set isActive(value) {
+    _isActive = value;
+    notifyListeners();
+  }
+  
+  void onToggle();
+}
+
+class Freehand extends Tool {
+  @override
+  void onToggle() {}
+}
+
+class Pencil extends Tool {
+  @override
+  void onToggle() {}
+}
+
+class Eraser extends Tool {
+  @override
+  void onToggle() {}
+}
+
+class Picker extends Tool {
+  @override
+  void onToggle() {}
+}
+
+class Stringify extends Tool {
+  @override
+  void onToggle() {}
+}
+
+class Resize extends Tool {
+  @override
+  void onToggle() {}
+}
+
+class Grid extends Tool {
+
+  static final Grid _singleton = Grid._();
+  Grid._();
+
+  factory Grid() {
+    return _singleton;
+  }
+
+  @override
+  void onToggle() {}
 }

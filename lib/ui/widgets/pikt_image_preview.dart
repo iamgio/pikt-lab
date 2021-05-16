@@ -1,14 +1,16 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/pikt/pikt_image.dart';
 import 'package:piktlab/pikt/pixel.dart';
+import 'package:piktlab/tools/tools.dart';
 import 'package:piktlab/ui/utils/scroll_listener.dart';
 
 class PiktImagePreview extends StatefulWidget {
   final PiktImage image;
-  final bool showGrid;
 
-  const PiktImagePreview({Key key, this.image, this.showGrid = false}) : super(key: key);
+  const PiktImagePreview({Key key, this.image}) : super(key: key);
 
   @override
   _PiktImagePreviewState createState() => _PiktImagePreviewState();
@@ -19,8 +21,21 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
   FocusNode _focus = FocusNode();
   ScrollController _scrollController = ScrollController();
 
+  bool _showGrid = false;
   bool _isCtrlDown = false;
   double _scale = 1.0;
+
+
+  @override
+  void initState() {
+    final grid = Grid();
+    grid.addListener(() {
+      setState(() {
+        _showGrid = grid.isActive;
+      });
+    });
+    super.initState();
+  }
 
   _buildGrid() => Row(
         mainAxisSize: MainAxisSize.min,
@@ -33,12 +48,22 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
               (y) => PixelPreview(
                 pixel: widget.image.pixels[y * widget.image.width + x],
                 scale: _scale,
-                showGrid: widget.showGrid,
+                showGrid: _showGrid,
               ),
             ),
           ),
         ),
       );
+
+  _onScroll(PointerScrollEvent event) {
+    if (_isCtrlDown) {
+      setState(() {
+        _scale += -event.scrollDelta.dy / UIConstants.canvas_zoom_factor;
+      });
+    } else {
+      _scrollController.jumpTo(_scrollController.position.pixels + event.scrollDelta.dy * _scale);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,15 +72,7 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
       focusNode: _focus,
       autofocus: true,
       child: ScrollListener(
-        onScroll: (event) {
-          if(_isCtrlDown) {
-            setState(() {
-              _scale += -event.scrollDelta.dy / UIConstants.canvas_zoom_factor;
-            });
-          } else {
-            _scrollController.jumpTo(_scrollController.position.pixels + event.scrollDelta.dy * _scale);
-          }
-        },
+        onScroll: _onScroll,
         child: SingleChildScrollView(
           controller: _scrollController,
           physics: NeverScrollableScrollPhysics(),
@@ -80,7 +97,7 @@ class PixelPreview extends StatelessWidget {
       height: UIConstants.canvas_pixel_size * scale,
       decoration: BoxDecoration(
         color: pixel.color,
-        border: showGrid ? Border.all(color: Colors.black, width: 1) : Border.fromBorderSide(BorderSide.none),
+        border: showGrid ? Border.all(color: AppColors.grid, width: scale / UIConstants.canvas_grid_factor) : Border.fromBorderSide(BorderSide.none),
       ),
     );
   }

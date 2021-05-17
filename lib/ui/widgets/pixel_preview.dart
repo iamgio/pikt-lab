@@ -26,26 +26,29 @@ class _PixelPreviewState extends State<PixelPreview> {
     super.initState();
   }
 
+  _handleChanges() {
+    switch (tool.runtimeType) {
+      case Pencil:
+        setState(() {
+          _color = currentColor;
+        });
+        break;
+      case Eraser:
+        setState(() {
+          _color = Colors.white; // todo whitespace from scheme
+        });
+        break;
+      case Picker:
+        currentColor = _color;
+        tool = Pencil();
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        switch (tool.runtimeType) {
-          case Pencil:
-            setState(() {
-              _color = currentColor;
-            });
-            break;
-          case Eraser:
-            setState(() {
-              _color = Colors.white; // todo whitespace from scheme
-            });
-            break;
-          case Picker:
-            currentColor = _color;
-            break;
-        }
-      },
+      onTap: _handleChanges,
       child: Container(
         width: UIConstants.canvas_pixel_size * widget.scale,
         height: UIConstants.canvas_pixel_size * widget.scale,

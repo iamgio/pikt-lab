@@ -54,38 +54,28 @@ abstract class Tool extends ChangeNotifier {
     notifyListeners();
   }
   
-  void onToggle();
-}
-
-class Freehand extends Tool {
-  @override
   void onToggle() {}
 }
+
+class Freehand extends Tool {}
 
 class Pencil extends Tool {
-  @override
-  void onToggle() {}
+
+  static final Pencil _singleton = Pencil._();
+  Pencil._();
+
+  factory Pencil() {
+    return _singleton;
+  }
 }
 
-class Eraser extends Tool {
-  @override
-  void onToggle() {}
-}
+class Eraser extends Tool {}
 
-class Picker extends Tool {
-  @override
-  void onToggle() {}
-}
+class Picker extends Tool {}
 
-class Stringify extends Tool {
-  @override
-  void onToggle() {}
-}
+class Stringify extends Tool {}
 
-class Resize extends Tool {
-  @override
-  void onToggle() {}
-}
+class Resize extends Tool {}
 
 class Grid extends Tool {
 

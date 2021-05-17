@@ -1,12 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/pikt/pikt_image.dart';
 import 'package:piktlab/pikt/pikt_project.dart';
-import 'package:piktlab/pikt/pixel.dart';
 import 'package:piktlab/tools/tools.dart';
 import 'package:piktlab/ui/utils/scroll_listener.dart';
+import 'package:piktlab/ui/widgets/pixel_preview.dart';
 
 class PiktImagePreview extends StatefulWidget {
 
@@ -87,26 +86,6 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
           physics: NeverScrollableScrollPhysics(),
           child: _buildGrid(),
         ),
-      ),
-    );
-  }
-}
-
-class PixelPreview extends StatelessWidget {
-  final Pixel pixel;
-  final double scale;
-  final bool showGrid;
-
-  const PixelPreview({Key key, this.pixel, this.scale, this.showGrid}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: UIConstants.canvas_pixel_size * scale,
-      height: UIConstants.canvas_pixel_size * scale,
-      decoration: BoxDecoration(
-        color: pixel.color,
-        border: showGrid ? Border.all(color: AppColors.grid, width: scale / UIConstants.canvas_grid_factor) : Border.fromBorderSide(BorderSide.none),
       ),
     );
   }

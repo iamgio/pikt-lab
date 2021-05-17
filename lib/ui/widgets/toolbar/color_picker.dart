@@ -19,6 +19,17 @@ class _ToolbarColorPickerState extends State<ToolbarColorPicker> {
   Color _color = currentColor;
   OverlayEntry _pickerOverlay;
 
+
+  @override
+  void initState() {
+    addColorListener((color) {
+      setState(() {
+        _color = color;
+      });
+    });
+    super.initState();
+  }
+
   _buildFloatingPickerPopup() {
     final picker = ColorPickerOverlay(
       initialColor: _color,

@@ -61,8 +61,13 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
         _scale += -event.scrollDelta.dy / UIConstants.canvas_zoom_factor;
       });
     } else {
-      _scrollController.jumpTo(_scrollController.position.pixels + event.scrollDelta.dy * _scale);
+      _scrollTo(event.scrollDelta.dy * _scale);
     }
+  }
+
+  _scrollTo(double position) {
+    position += _scrollController.offset;
+    _scrollController.jumpTo(position < 0 ? 0 : (position > _scrollController.position.maxScrollExtent ? _scrollController.position.maxScrollExtent : position));
   }
 
   @override

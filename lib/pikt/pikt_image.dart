@@ -2,18 +2,22 @@ import 'dart:io';
 
 import 'package:flutter/material.dart' show Color;
 import 'package:image/image.dart' hide Color;
+import 'package:observable/observable.dart';
 import 'package:piktlab/pikt/pixel.dart';
 
-class PiktImage {
+/// The source image of a [PiktProject].
+class PiktImage extends Object with Observable {
 
   final File file;
-  final int width;
-  final int height;
-  final List<Pixel> pixels;
 
-  PiktImage._(this.file, this.width, this.height, this.pixels);
+  int width;
+  int height;
+  List<Pixel> pixels;
 
-  static Future<PiktImage> read(File file) async {
+  PiktImage(this.file);
+
+  /// Reads and updates image info.
+  Future read() async {
     final image = decodeImage(await file.readAsBytes());
     final List<Pixel> pixels = [];
 
@@ -22,10 +26,13 @@ class PiktImage {
         pixels.add(Pixel(x, y, Color(_abgrToArgb(image.data[y * image.width + x]))));
       }
     }
-    return PiktImage._(file, image.width, image.height, pixels);
+
+    this.width = image.width;
+    this.height = image.height;
+    this.pixels = pixels;
   }
 
-  static int _abgrToArgb(int abgrColor) {
+  int _abgrToArgb(int abgrColor) {
     int r = (abgrColor >> 16) & 0xFF;
     int b = abgrColor & 0xFF;
     return (abgrColor & 0xFF00FF00) | (b << 16) | r;

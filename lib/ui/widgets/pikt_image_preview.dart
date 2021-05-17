@@ -3,20 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/pikt/pikt_image.dart';
+import 'package:piktlab/pikt/pikt_project.dart';
 import 'package:piktlab/pikt/pixel.dart';
 import 'package:piktlab/tools/tools.dart';
 import 'package:piktlab/ui/utils/scroll_listener.dart';
 
 class PiktImagePreview extends StatefulWidget {
-  final PiktImage image;
 
-  const PiktImagePreview({Key key, this.image}) : super(key: key);
+  final PiktProject project;
+
+  const PiktImagePreview({Key key, this.project}) : super(key: key);
 
   @override
   _PiktImagePreviewState createState() => _PiktImagePreviewState();
 }
 
 class _PiktImagePreviewState extends State<PiktImagePreview> {
+
+  PiktImage get _image => widget.project.image;
 
   FocusNode _focus = FocusNode();
   ScrollController _scrollController = ScrollController();
@@ -40,13 +44,13 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
   _buildGrid() => Row(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(
-          widget.image.width,
+          _image.width,
           (x) => Column(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
-              widget.image.height,
+              _image.height,
               (y) => PixelPreview(
-                pixel: widget.image.pixels[y * widget.image.width + x],
+                pixel: _image.pixels[y * _image.width + x],
                 scale: _scale,
                 showGrid: _showGrid,
               ),

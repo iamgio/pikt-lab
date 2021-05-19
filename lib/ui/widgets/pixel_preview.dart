@@ -4,6 +4,7 @@ import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/pikt/pikt_project.dart';
 import 'package:piktlab/pikt/pixel.dart';
 import 'package:piktlab/tools/tools.dart';
+import 'package:piktlab/ui/utils/overlay.dart';
 
 class PixelPreview extends StatefulWidget {
   final PiktProject project;
@@ -27,6 +28,7 @@ class _PixelPreviewState extends State<PixelPreview> {
   }
 
   _handleChanges() {
+    closeOverlays();
     switch (tool.runtimeType) {
       case Pencil:
         setState(() {

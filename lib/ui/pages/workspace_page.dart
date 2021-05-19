@@ -22,8 +22,7 @@ class WorkspacePage extends StatelessWidget {
       ),
       titleBarColor: AppColors.workspace_primary,
       titleBarPaddingBottom: UIConstants.workspace_title_bar_padding_bottom,
-      child: GestureDetector(
-        onTap: closeOverlays,
+      child: OverlaysCloser(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

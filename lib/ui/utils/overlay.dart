@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 List<OverlayEntry> closeableOverlays = [];
 
@@ -26,5 +27,24 @@ class CloseableOverlay {
     final overlay = OverlayEntry(builder: (builder) => _buildPositioned(position, offset, child));
     closeableOverlays.add(overlay);
     return overlay;
+  }
+}
+
+/// A widget that closes active [closeableOverlays] when tapped.
+class OverlaysCloser extends StatelessWidget {
+
+  final Widget child;
+
+  const OverlaysCloser({Key key, this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: closeOverlays,
+      child: Container(
+        color: Colors.transparent, // Required to register the input
+        child: child,
+      ),
+    );
   }
 }

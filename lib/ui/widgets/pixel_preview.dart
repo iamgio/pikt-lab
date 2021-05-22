@@ -27,18 +27,21 @@ class _PixelPreviewState extends State<PixelPreview> {
     super.initState();
   }
 
+  _setColor(Color color) {
+    widget.pixel.color = color;
+    setState(() {
+      _color = color;
+    });
+  }
+
   _handleChanges() {
     closeOverlays();
     switch (tool.runtimeType) {
       case Pencil:
-        setState(() {
-          _color = currentColor;
-        });
+        _setColor(currentColor);
         break;
       case Eraser:
-        setState(() {
-          _color = Colors.white; // todo whitespace from scheme
-        });
+        _setColor(Colors.white); // todo whitespace from scheme
         break;
       case Picker:
         currentColor = _color;

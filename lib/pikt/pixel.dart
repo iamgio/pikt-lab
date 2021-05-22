@@ -4,7 +4,7 @@ import 'package:piktlab/pikt/color_scheme.dart';
 class Pixel {
 
   final int x, y;
-  final Color color;
+  Color color;
 
   Pixel(this.x, this.y, this.color);
 

@@ -76,7 +76,10 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
   @override
   Widget build(BuildContext context) {
     return RawKeyboardListener(
-      onKey: (key) => _isCtrlDown = key.isControlPressed,
+      onKey: (key) {
+        _isCtrlDown = key.isControlPressed;
+        if(key.character == 's' && _isCtrlDown) _image.save(); // todo better handling
+      },
       focusNode: _focus,
       autofocus: true,
       child: ScrollListener(

@@ -1,9 +1,14 @@
+import 'package:flutter/cupertino.dart';
+
 /// Some string and numeric constants for the UI.
 class UIConstants {
 
   UIConstants._();
 
   static const font_family = 'Karla';
+
+  static const window_size = const Size(1280, 720);
+  static const window_min_size = const Size(768, 432);
 
   // Landing page
 
@@ -77,6 +82,8 @@ class UIConstants {
   static const canvas_pixel_size = 10.0;
   static const canvas_zoom_factor = 40.0;
   static const canvas_grid_factor = 5.0;
+  static const canvas_max_autosize_width_factor = 2.0;
+  static const canvas_min_scale = .5;
 
   static const panel_padding_top = 24.0;
   static const panel_padding_left = 35.0;

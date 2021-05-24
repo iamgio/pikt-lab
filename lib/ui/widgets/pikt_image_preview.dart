@@ -1,9 +1,13 @@
+import 'dart:math';
+
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/pikt/pikt_image.dart';
 import 'package:piktlab/pikt/pikt_project.dart';
 import 'package:piktlab/tools/tools.dart';
+import 'package:piktlab/ui/pages/workspace_page.dart';
 import 'package:piktlab/ui/utils/scroll_listener.dart';
 import 'package:piktlab/ui/widgets/pixel_preview.dart';
 
@@ -26,11 +30,14 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
 
   bool _showGrid = false;
   bool _isCtrlDown = false;
-  double _scale = 1.0;
+  double _scale;
 
 
   @override
   void initState() {
+    _setInitialScale();
+
+    // Grid listener
     final grid = Grid();
     grid.addListener(() {
       if(mounted) {
@@ -39,13 +46,18 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
         });
       }
     });
+
     super.initState();
   }
 
+  _setInitialScale() {
+    // Set scale based on height.
+    _scale = (WorkspacePage.availableHeight / _image.height / UIConstants.canvas_pixel_size).roundToDouble();
 
-  @override
-  void dispose() {
-    super.dispose();
+    // Set scale based on width if it exceeds window width divided by max_autosizize_width_factor.
+    if(_scale * _image.width * UIConstants.canvas_pixel_size >= appWindow.size.width / UIConstants.canvas_max_autosize_width_factor) {
+      _scale = appWindow.size.width / UIConstants.canvas_max_autosize_width_factor / _image.width / UIConstants.canvas_pixel_size;
+    }
   }
 
   _buildGrid() => Row(
@@ -70,6 +82,7 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
     if (_isCtrlDown) {
       setState(() {
         _scale += -event.scrollDelta.dy / UIConstants.canvas_zoom_factor;
+        if(_scale < UIConstants.canvas_min_scale) _scale = UIConstants.canvas_min_scale;
       });
     } else {
       _scrollTo(event.scrollDelta.dy * _scale);
@@ -78,7 +91,7 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
 
   _scrollTo(double position) {
     position += _scrollController.offset;
-    _scrollController.jumpTo(position < 0 ? 0 : (position > _scrollController.position.maxScrollExtent ? _scrollController.position.maxScrollExtent : position));
+    _scrollController.jumpTo(position < 0 ? 0 : min(position, _scrollController.position.maxScrollExtent));
   }
 
   @override

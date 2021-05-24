@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/lang.dart';
+import 'package:piktlab/constants/ui_constants.dart';
 
 // https://pub.dev/packages/bitsdojo_window
 
@@ -11,8 +12,8 @@ class Window {
   static void init() {
     doWhenWindowReady(() {
       appWindow.title = lang['title'];
-      appWindow.size = Size(1280, 720);
-      appWindow.minSize = Size(768, 432);
+      appWindow.size = UIConstants.window_size;
+      appWindow.minSize = UIConstants.window_min_size;
       appWindow.alignment = Alignment.center;
       appWindow.show();
     });

@@ -77,4 +77,10 @@ class UIConstants {
   static const canvas_pixel_size = 10.0;
   static const canvas_zoom_factor = 40.0;
   static const canvas_grid_factor = 5.0;
+
+  static const panel_padding_top = 24.0;
+  static const panel_padding_left = 35.0;
+  static const panel_title_font_size = 30.0;
+  static const panel_run_padding = 14.0;
+  static const panel_run_highlight_opacity = .1;
 }

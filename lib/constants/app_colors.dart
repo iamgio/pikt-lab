@@ -38,4 +38,7 @@ class AppColors {
   static const color_picker_text = Colors.white;
 
   static const grid = Color(0xFF404040);
+
+  static const panel_text = Colors.white;
+  static const panel_run = Color(0xFF8BE28B);
 }

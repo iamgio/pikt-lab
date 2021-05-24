@@ -6,6 +6,7 @@ import 'package:piktlab/pikt/pikt_project.dart';
 import 'package:piktlab/ui/pages/page.dart';
 import 'package:piktlab/ui/utils/gradients.dart';
 import 'package:piktlab/ui/utils/overlay.dart';
+import 'package:piktlab/ui/widgets/panel/panel.dart';
 import 'package:piktlab/ui/widgets/pikt_image_preview.dart';
 import 'package:piktlab/ui/widgets/toolbar/toolbar.dart';
 
@@ -24,15 +25,21 @@ class WorkspacePage extends StatelessWidget {
       titleBarPaddingBottom: UIConstants.workspace_title_bar_padding_bottom,
       child: OverlaysCloser(
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Toolbar(),
             SizedBox(width: UIConstants.canvas_spacing_left),
-            FutureBuilder(
-              future: project.image.read(),
-              builder: (context, snapshot) {
-                return snapshot.connectionState == ConnectionState.done ? PiktImagePreview(project: project) : Container();
-              },
+            Center(
+              child: FutureBuilder(
+                future: project.image.read(),
+                builder: (context, snapshot) {
+                  return snapshot.connectionState == ConnectionState.done ? PiktImagePreview(project: project) : Container();
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: UIConstants.panel_padding_left, top: UIConstants.panel_padding_top),
+              child: Panel(project: project),
             ),
           ],
         ),

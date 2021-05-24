@@ -33,11 +33,19 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
   void initState() {
     final grid = Grid();
     grid.addListener(() {
-      setState(() {
-        _showGrid = grid.isActive;
-      });
+      if(mounted) {
+        setState(() {
+          _showGrid = grid.isActive;
+        });
+      }
     });
     super.initState();
+  }
+
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   _buildGrid() => Row(

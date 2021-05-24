@@ -24,24 +24,28 @@ class WorkspacePage extends StatelessWidget {
       titleBarColor: AppColors.workspace_primary,
       titleBarPaddingBottom: UIConstants.workspace_title_bar_padding_bottom,
       child: OverlaysCloser(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Toolbar(),
-            SizedBox(width: UIConstants.canvas_spacing_left),
-            Center(
-              child: FutureBuilder(
-                future: project.image.read(),
-                builder: (context, snapshot) {
-                  return snapshot.connectionState == ConnectionState.done ? PiktImagePreview(project: project) : Container();
-                },
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: NeverScrollableScrollPhysics(),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Toolbar(),
+              SizedBox(width: UIConstants.canvas_spacing_left),
+              Center(
+                child: FutureBuilder(
+                  future: project.image.read(),
+                  builder: (context, snapshot) {
+                    return snapshot.connectionState == ConnectionState.done ? PiktImagePreview(project: project) : Container();
+                  },
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: UIConstants.panel_padding_left, top: UIConstants.panel_padding_top),
-              child: Panel(project: project),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.only(left: UIConstants.panel_padding_left, top: UIConstants.panel_padding_top),
+                child: Panel(project: project),
+              ),
+            ],
+          ),
         ),
       ),
     );

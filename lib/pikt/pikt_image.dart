@@ -42,7 +42,7 @@ class PiktImage extends Object with Observable {
         image.setPixelRgba(x, y, pixel.color.red, pixel.color.green, pixel.color.blue);
       }
     }
-    await File(file.parent.path).writeAsBytes(encodePng(image));
+    await file.writeAsBytes(encodePng(image));
   }
 
   int _abgrToArgb(int abgrColor) {

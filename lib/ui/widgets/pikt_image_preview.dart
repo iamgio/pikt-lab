@@ -3,12 +3,14 @@ import 'dart:math';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/pikt/pikt_image.dart';
 import 'package:piktlab/pikt/pikt_project.dart';
 import 'package:piktlab/tools/tools.dart';
 import 'package:piktlab/ui/pages/workspace_page.dart';
 import 'package:piktlab/ui/utils/scroll_listener.dart';
+import 'package:piktlab/ui/widgets/keys/key_combination.dart';
 import 'package:piktlab/ui/widgets/pixel_preview.dart';
 
 class PiktImagePreview extends StatefulWidget {
@@ -99,7 +101,11 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
     return RawKeyboardListener(
       onKey: (key) {
         _isCtrlDown = key.isControlPressed;
-        if(key.character == 's' && _isCtrlDown) _image.save(); // todo better handling
+        if(key is RawKeyDownEvent) {
+          keyCombinations.forEach((combination) {
+            if (combination.matches(key)) combination.onPress(key, widget.project);
+          });
+        }
       },
       focusNode: _focus,
       autofocus: true,

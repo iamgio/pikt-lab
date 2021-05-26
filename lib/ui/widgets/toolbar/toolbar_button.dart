@@ -70,7 +70,7 @@ class _ToolbarButtonState extends State<ToolbarButton> {
                 widget.tool.isActive = _isSelected;
                 widget.tool.onToggle();
                 widget.onSelected?.call(_isSelected);
-                closeOverlays();
+                closeOverlays(context);
               });
             },
             padding: EdgeInsets.all(UIConstants.toolbar_icon_padding),

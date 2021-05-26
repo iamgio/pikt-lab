@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 List<OverlayEntry> closeableOverlays = [];
 
 /// Removes all the overlays on the scene.
-closeOverlays() {
+closeOverlays(BuildContext context) {
   closeableOverlays.forEach((overlay) => overlay.remove());
   closeableOverlays.clear();
+  if(context != null) FocusScope.of(context).requestFocus();
 }
 
 /// Utility class that builds an [OverlayEntry] and registers it, so that when the user clicks outside its child, the overlay gets removed.
@@ -40,7 +41,7 @@ class OverlaysCloser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: closeOverlays,
+      onTap: () => closeOverlays(context),
       child: Container(
         color: Colors.transparent, // Required to register the input
         child: child,

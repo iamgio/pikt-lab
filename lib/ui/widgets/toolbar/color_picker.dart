@@ -178,7 +178,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
         enabledBorder: border,
         focusedBorder: border,
       ),
-      onSubmitted: (text) => closeOverlays(),
+      onSubmitted: (text) => closeOverlays(context),
     );
   }
 

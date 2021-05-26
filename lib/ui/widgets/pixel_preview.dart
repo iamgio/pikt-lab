@@ -34,8 +34,8 @@ class _PixelPreviewState extends State<PixelPreview> {
     });
   }
 
-  _handleChanges() {
-    closeOverlays();
+  _handleChanges(Tool tool) {
+    closeOverlays(context);
     switch (tool.runtimeType) {
       case Pencil:
         _setColor(currentColor);
@@ -53,7 +53,8 @@ class _PixelPreviewState extends State<PixelPreview> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _handleChanges,
+      onTap: () => _handleChanges(tool),
+      onSecondaryTap: () => _handleChanges(tool is Eraser ? Pencil() : Eraser()),
       child: Container(
         width: UIConstants.canvas_pixel_size * widget.scale,
         height: UIConstants.canvas_pixel_size * widget.scale,

@@ -99,7 +99,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
       _color = value;
       _hsvColor = hsvColor ?? HSVColor.fromColor(value);
     });
-    tool = Pencil();
+    currentTool = Pencil();
     widget.onColorChanged(value);
   }
 

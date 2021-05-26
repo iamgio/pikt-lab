@@ -13,8 +13,8 @@ class ToolbarButton extends StatefulWidget {
 
   const ToolbarButton({Key key, this.tool, this.isIndependentSelection = false, this.icon, this.onSelected}) : super(key: key);
 
-  ToolbarButton.svg({this.tool, this.isIndependentSelection = false, String icon, this.onSelected}) :
-        icon = SvgPicture.asset('images/toolbar/$icon.svg', color: AppColors.toolbar_icon, width: UIConstants.toolbar_icon_size);
+  ToolbarButton.tool({this.tool, this.isIndependentSelection = false, this.onSelected}) :
+        icon = SvgPicture.asset('images/toolbar/${tool.svgName}.svg', color: AppColors.toolbar_icon, width: UIConstants.toolbar_icon_size);
 
   @override
   _ToolbarButtonState createState() => _ToolbarButtonState();
@@ -65,7 +65,7 @@ class _ToolbarButtonState extends State<ToolbarButton> {
               setState(() {
                 _isSelected ^= true;
                 if(!widget.isIndependentSelection) {
-                  tool = _isSelected ? widget.tool : Freehand();
+                  currentTool = _isSelected ? widget.tool : Freehand();
                 }
                 widget.tool.isActive = _isSelected;
                 widget.tool.onToggle();

@@ -4,14 +4,14 @@ import 'package:piktlab/constants/app_colors.dart';
 // Tool
 
 /// Current tool.
-Tool _tool = Freehand();
+Tool _currentTool = Freehand();
 
 /// Current tool
-Tool get tool => _tool;
+Tool get currentTool => _currentTool;
 
 /// Sets current tool and calls the listeners.
-set tool(value) {
-  _tool = value;
+set currentTool(value) {
+  _currentTool = value;
   _toolListeners.forEach((listener) => listener(value));
 }
 
@@ -53,11 +53,16 @@ abstract class Tool extends ChangeNotifier {
     _isActive = value;
     notifyListeners();
   }
-  
+
+  String get svgName;
+
   void onToggle() {}
 }
 
-class Freehand extends Tool {}
+class Freehand extends Tool {
+  @override
+  String get svgName => null;
+}
 
 class Pencil extends Tool {
 
@@ -67,15 +72,30 @@ class Pencil extends Tool {
   factory Pencil() {
     return _singleton;
   }
+
+  @override
+  String get svgName => 'pencil';
 }
 
-class Eraser extends Tool {}
+class Eraser extends Tool {
+  @override
+  String get svgName => 'eraser';
+}
 
-class Picker extends Tool {}
+class Picker extends Tool {
+  @override
+  String get svgName => 'color_picker';
+}
 
-class Stringify extends Tool {}
+class Stringify extends Tool {
+  @override
+  String get svgName => 'string';
+}
 
-class Resize extends Tool {}
+class Resize extends Tool {
+  @override
+  String get svgName => 'resize';
+}
 
 class Grid extends Tool {
 
@@ -87,5 +107,5 @@ class Grid extends Tool {
   }
 
   @override
-  void onToggle() {}
+  String get svgName => 'grid';
 }

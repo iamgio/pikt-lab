@@ -20,21 +20,21 @@ class _ToolbarState extends State<Toolbar> {
 
   List<Widget> _buildButtons() {
     return [
-      ToolbarButton.svg(tool: Pencil(), icon: 'pencil'),
+      ToolbarButton.tool(tool: Pencil()),
       _buildButtonSpacer(),
       SizedBox(height: 5),
       ToolbarColorPicker(),
       SizedBox(height: 5),
       _buildButtonSpacer(),
-      ToolbarButton.svg(tool: Eraser(), icon: 'eraser'),
+      ToolbarButton.tool(tool: Eraser()),
       _buildButtonSpacer(),
-      ToolbarButton.svg(tool: Picker(), icon: 'color_picker'),
+      ToolbarButton.tool(tool: Picker()),
       _buildSectionSpacer(),
-      ToolbarButton.svg(tool: Stringify(), icon: 'string'),
+      ToolbarButton.tool(tool: Stringify()),
       _buildSectionSpacer(),
-      ToolbarButton.svg(tool: Resize(), icon: 'resize'),
+      ToolbarButton.tool(tool: Resize()),
       _buildButtonSpacer(),
-      ToolbarButton.svg(tool: Grid(), isIndependentSelection: true, icon: 'grid'),
+      ToolbarButton.tool(tool: Grid(), isIndependentSelection: true),
     ];
   }
 

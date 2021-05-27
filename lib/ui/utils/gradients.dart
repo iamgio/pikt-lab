@@ -22,9 +22,9 @@ class Gradients {
     colors: [
       AppColors.workspace_bg_gradient_1,
       AppColors.workspace_bg_gradient_2,
-      AppColors.workspace_bg_gradient_3,
+      //AppColors.workspace_bg_gradient_3,
     ],
-    stops: [0, .6, 1],
+    stops: [0, 1],
   );
 
   static LinearGradient get primaryButtonGradient => LinearGradient(

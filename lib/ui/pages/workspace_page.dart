@@ -1,6 +1,6 @@
-
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:piktlab/constants/app_colors.dart';
 import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/pikt/pikt_project.dart';
@@ -17,12 +17,45 @@ class WorkspacePage extends StatelessWidget {
 
   const WorkspacePage({Key key, this.project}) : super(key: key);
 
+  _buildPreview() => Center(
+        child: FutureBuilder(
+          future: project.image.read(),
+          builder: (context, snapshot) {
+            return snapshot.connectionState == ConnectionState.done ? PiktImagePreview(project: project) : Container();
+          },
+        ),
+      );
+
+  _buildTitleBarIcon({IconData icon, VoidCallback onPressed}) => IconButton(
+    icon: Icon(icon),
+    color: AppColors.workspace_title_bar_icon,
+    iconSize: UIConstants.workspace_title_bar_icon_size,
+    onPressed: onPressed,
+  );
+
+  _buildTitleBarRow() {
+    final spacing = UIConstants.workspace_title_bar_icon_spacing;
+    return Row(
+      children: [
+        SizedBox(width: spacing),
+        SvgPicture.asset('images/pikt_light.svg', height: Window.titleBarHeight),
+        SizedBox(width: spacing + UIConstants.canvas_spacing_left + 5),
+        _buildTitleBarIcon(icon: Icons.save, onPressed: () {}),
+        SizedBox(width: spacing),
+        _buildTitleBarIcon(icon: Icons.folder, onPressed: () {}),
+        SizedBox(width: spacing),
+        _buildTitleBarIcon(icon: Icons.settings, onPressed: () {}),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return UIPage(
       decoration: BoxDecoration(
         gradient: Gradients.workspaceBgGradient,
       ),
+      titleBar: _buildTitleBarRow(),
       titleBarColor: AppColors.workspace_primary,
       titleBarPaddingBottom: UIConstants.workspace_title_bar_padding_bottom,
       child: OverlaysCloser(
@@ -34,14 +67,7 @@ class WorkspacePage extends StatelessWidget {
             children: [
               Toolbar(),
               SizedBox(width: UIConstants.canvas_spacing_left),
-              Center(
-                child: FutureBuilder(
-                  future: project.image.read(),
-                  builder: (context, snapshot) {
-                    return snapshot.connectionState == ConnectionState.done ? PiktImagePreview(project: project) : Container();
-                  },
-                ),
-              ),
+              _buildPreview(),
               Padding(
                 padding: EdgeInsets.only(left: UIConstants.panel_padding_left, top: UIConstants.panel_padding_top),
                 child: Panel(project: project),

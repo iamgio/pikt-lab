@@ -2,11 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart' show Color;
 import 'package:image/image.dart' hide Color;
-import 'package:observable/observable.dart';
 import 'package:piktlab/pikt/pixel.dart';
 
 /// The source image of a [PiktProject].
-class PiktImage extends Object with Observable {
+class PiktImage extends Object {
 
   final File file;
 

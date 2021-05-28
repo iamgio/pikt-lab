@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show RawKeyEvent;
 import 'package:piktlab/pikt/pikt_project.dart';
 
 /// Workspace key combinations.

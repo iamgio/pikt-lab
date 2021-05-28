@@ -17,8 +17,6 @@ class ToolbarColorPicker extends StatefulWidget {
 
 class _ToolbarColorPickerState extends State<ToolbarColorPicker> {
   Color _color = currentColor;
-  OverlayEntry _pickerOverlay;
-
 
   @override
   void initState() {
@@ -61,8 +59,7 @@ class _ToolbarColorPickerState extends State<ToolbarColorPicker> {
             decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.toolbar_color_picker_border, width: UIConstants.toolbar_color_picker_border_width)),
           ),
           onPressed: () {
-            _pickerOverlay = _buildFloatingPickerPopup();
-            Overlay.of(context).insert(_pickerOverlay);
+            Overlay.of(context).insert(_buildFloatingPickerPopup());
           },
         ),
       ],

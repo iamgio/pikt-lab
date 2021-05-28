@@ -71,6 +71,7 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
             children: List.generate(
               _image.height,
               (y) => PixelPreview(
+                project: widget.project,
                 pixel: _image.pixels[y * _image.width + x],
                 scale: _scale,
                 showGrid: _showGrid,

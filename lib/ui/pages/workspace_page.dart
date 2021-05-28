@@ -40,7 +40,7 @@ class WorkspacePage extends StatelessWidget {
         SizedBox(width: spacing),
         SvgPicture.asset('images/pikt_light.svg', height: Window.titleBarHeight),
         SizedBox(width: spacing + UIConstants.canvas_spacing_left + 5),
-        _buildTitleBarIcon(icon: Icons.save, onPressed: () {}),
+        _buildTitleBarIcon(icon: Icons.save, onPressed: () => project.save().then((value) => print(value))),
         SizedBox(width: spacing),
         _buildTitleBarIcon(icon: Icons.folder, onPressed: () {}),
         SizedBox(width: spacing),

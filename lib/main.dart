@@ -27,7 +27,7 @@ class PiktLabApp extends StatelessWidget {
       home: WorkspacePage(
         project: PiktProject( // Debug
           name: 'Test',
-          imageFile: File('D:\\Coding\\Java Projects\\testing\\pikt2_test\\primes_standardecompacted.png'),
+          imageFile: File('/Users/gio/Dev/Tests/pikt/primes_standardecompacted.png'),
           globalSettings: PiktGlobalSettings(piktJar: '', jvmCompiler: '', nativeCompiler: ''),
           projectSettings: PiktProjectSettings(colorScheme: '', compilationTargets: []),
         ),

@@ -54,25 +54,25 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
 
   _setInitialScale() {
     // Set scale based on height.
-    _scale = (WorkspacePage.availableHeight / _image.height / UIConstants.canvas_pixel_size).roundToDouble();
+    _scale = (WorkspacePage.availableHeight / (_image.height ?? 1) / UIConstants.canvas_pixel_size).roundToDouble();
 
     // Set scale based on width if it exceeds window width divided by max_autosizize_width_factor.
-    if(_scale * _image.width * UIConstants.canvas_pixel_size >= appWindow.size.width / UIConstants.canvas_max_autosize_width_factor) {
-      _scale = appWindow.size.width / UIConstants.canvas_max_autosize_width_factor / _image.width / UIConstants.canvas_pixel_size;
+    if(_scale * (_image.width ?? 1) * UIConstants.canvas_pixel_size >= appWindow.size.width / UIConstants.canvas_max_autosize_width_factor) {
+      _scale = appWindow.size.width / UIConstants.canvas_max_autosize_width_factor / (_image.width ?? 1) / UIConstants.canvas_pixel_size;
     }
   }
 
   _buildGrid() => Row(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(
-          _image.width,
+          _image.width ?? 1,
           (x) => Column(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(
-              _image.height,
+              _image.height ?? 1,
               (y) => PixelPreview(
                 project: widget.project,
-                pixel: _image.pixels[y * _image.width + x],
+                pixel: _image.pixels != null ? _image.pixels![y * _image.width! + x] : null,
                 scale: _scale,
                 showGrid: _showGrid,
               ),

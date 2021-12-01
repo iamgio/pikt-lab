@@ -1,7 +1,7 @@
 # Pikt Lab
 
 Work-in-progress IDE for [Pikt](https://github.com/iAmGio/pikt), built with Flutter desktop.  
-Currently Windows only.
+Windows and macOS are currently supported.
 
 **Goals** (these are mockups):
 

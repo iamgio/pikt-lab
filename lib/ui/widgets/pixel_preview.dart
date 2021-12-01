@@ -8,14 +8,14 @@ import 'package:piktlab/ui/utils/overlay.dart';
 
 class PixelPreview extends StatefulWidget {
   final PiktProject project;
-  final Pixel pixel;
+  final Pixel? pixel;
   final double scale;
   final bool showGrid;
 
   const PixelPreview({
     Key? key,
     required this.project,
-    required this.pixel,
+    this.pixel,
     required this.scale,
     required this.showGrid,
   }) : super(key: key);
@@ -29,12 +29,12 @@ class _PixelPreviewState extends State<PixelPreview> {
 
   @override
   void initState() {
-    _color = widget.pixel.color;
+    _color = widget.pixel?.color;
     super.initState();
   }
 
   _setColor(Color color) {
-    widget.pixel.color = color;
+    widget.pixel?.color = color;
     setState(() {
       _color = color;
     });

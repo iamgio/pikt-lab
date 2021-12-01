@@ -9,9 +9,9 @@ class PiktImage extends Object {
 
   final File file;
 
-  late int width;
-  late int height;
-  late List<Pixel> pixels;
+  int? width;
+  int? height;
+  List<Pixel>? pixels;
 
   PiktImage(this.file);
 
@@ -26,18 +26,18 @@ class PiktImage extends Object {
       }
     }
 
-    this.width = image.width;
-    this.height = image.height;
+    width = image.width;
+    height = image.height;
     this.pixels = pixels;
   }
 
   /// Saves the image to [file].
   Future save() async {
-    final image = Image(width, height);
+    final image = Image(width!, height!);
 
     for (int y = 0; y < image.height; y++) {
       for (int x = 0; x < image.width; x++) {
-        final pixel = pixels[y * width + x];
+        final pixel = pixels![y * width! + x];
         image.setPixelRgba(x, y, pixel.color.red, pixel.color.green, pixel.color.blue);
       }
     }

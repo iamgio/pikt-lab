@@ -9,7 +9,7 @@ class PiktProject {
   final PiktGlobalSettings globalSettings;
   final PiktProjectSettings projectSettings;
 
-  PiktProject({this.name, File imageFile, this.globalSettings, this.projectSettings}) :
+  PiktProject({required this.name, required File imageFile, required this.globalSettings, required this.projectSettings}) :
       image = PiktImage(imageFile);
 
   Future<bool> save() async {

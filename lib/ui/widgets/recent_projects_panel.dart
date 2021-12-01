@@ -8,14 +8,14 @@ import 'package:piktlab/ui/widgets/recent_project_button.dart';
 class RecentProjectsPanel extends StatelessWidget {
   final List<RecentProject> projects;
 
-  const RecentProjectsPanel({Key key, this.projects}) : super(key: key);
+  const RecentProjectsPanel({Key? key, required this.projects}) : super(key: key);
 
   _buildTitle() => Padding(
         padding: EdgeInsets.only(
             left: UIConstants.recent_projects_padding,
             top: UIConstants.recent_projects_padding),
         child: Text(
-          lang['recent_projects'].toUpperCase(),
+          lang['recent_projects']!.toUpperCase(),
           style: TextStyle(
             fontSize: UIConstants.recent_projects_header_font_size,
             color: AppColors.landing_recent_projects_text,
@@ -26,7 +26,7 @@ class RecentProjectsPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (projects == null || projects.isEmpty) return Container();
+    if (projects.isEmpty) return Container();
 
     return ConstrainedBox(
       constraints: BoxConstraints(

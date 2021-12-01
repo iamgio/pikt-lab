@@ -4,9 +4,9 @@ abstract class PiktSettings {
 
 class PiktGlobalSettings extends PiktSettings {
 
-  final String piktJar;
-  final String jvmCompiler;
-  final String nativeCompiler;
+  final String? piktJar;
+  final String? jvmCompiler;
+  final String? nativeCompiler;
 
   PiktGlobalSettings({this.piktJar, this.jvmCompiler, this.nativeCompiler});
 
@@ -24,8 +24,8 @@ class PiktGlobalSettings extends PiktSettings {
 
 class PiktProjectSettings extends PiktSettings {
 
-  final String colorScheme;
-  final List<CompilationTarget> compilationTargets;
+  final String? colorScheme;
+  final List<CompilationTarget>? compilationTargets;
 
   PiktProjectSettings({this.colorScheme, this.compilationTargets});
 
@@ -36,7 +36,7 @@ class PiktProjectSettings extends PiktSettings {
     if(colorScheme != null) buffer.write(' -Dcolors=$colorScheme ');
     if(compilationTargets != null) {
       buffer.write(' -Dtargets=');
-      buffer.write(compilationTargets.map((target) => target.toString().split('.').last).join(','));
+      buffer.write(compilationTargets!.map((target) => target.toString().split('.').last).join(','));
     }
 
     return buffer.toString();

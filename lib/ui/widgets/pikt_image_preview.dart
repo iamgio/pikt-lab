@@ -17,7 +17,7 @@ class PiktImagePreview extends StatefulWidget {
 
   final PiktProject project;
 
-  const PiktImagePreview({Key key, this.project}) : super(key: key);
+  const PiktImagePreview({Key? key, required this.project}) : super(key: key);
 
   @override
   _PiktImagePreviewState createState() => _PiktImagePreviewState();
@@ -32,7 +32,7 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
 
   bool _showGrid = false;
   bool _isCtrlDown = false;
-  double _scale;
+  double _scale = 1.0;
 
 
   @override

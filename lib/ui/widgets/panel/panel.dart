@@ -7,7 +7,7 @@ import 'package:piktlab/pikt/pikt_project.dart';
 class Panel extends StatelessWidget {
   final PiktProject project;
 
-  const Panel({Key key, this.project}) : super(key: key);
+  const Panel({Key? key, required this.project}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

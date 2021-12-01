@@ -7,7 +7,7 @@ import 'package:piktlab/ui/widgets/toolbar/toolbar_button.dart';
 
 /// The column on the left of the workspace that contains image-based tools.
 class Toolbar extends StatefulWidget {
-  const Toolbar({Key key}) : super(key: key);
+  const Toolbar({Key? key}) : super(key: key);
 
   @override
   _ToolbarState createState() => _ToolbarState();

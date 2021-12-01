@@ -9,7 +9,7 @@ import 'package:piktlab/tools/tools.dart';
 import 'package:piktlab/ui/utils/overlay.dart';
 
 class ToolbarColorPicker extends StatefulWidget {
-  const ToolbarColorPicker({Key key}) : super(key: key);
+  const ToolbarColorPicker({Key? key}) : super(key: key);
 
   @override
   _ToolbarColorPickerState createState() => _ToolbarColorPickerState();
@@ -59,7 +59,7 @@ class _ToolbarColorPickerState extends State<ToolbarColorPicker> {
             decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: AppColors.toolbar_color_picker_border, width: UIConstants.toolbar_color_picker_border_width)),
           ),
           onPressed: () {
-            Overlay.of(context).insert(_buildFloatingPickerPopup());
+            Overlay.of(context)?.insert(_buildFloatingPickerPopup());
           },
         ),
       ],
@@ -72,26 +72,26 @@ class ColorPickerOverlay extends StatefulWidget {
   final Color initialColor;
   final ValueChanged<Color> onColorChanged;
 
-  const ColorPickerOverlay({Key key, this.initialColor, this.onColorChanged}) : super(key: key);
+  const ColorPickerOverlay({Key? key, required this.initialColor, required this.onColorChanged}) : super(key: key);
 
   @override
   _ColorPickerOverlayState createState() => _ColorPickerOverlayState();
 }
 
 class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
-  Color _color;
-  HSVColor _hsvColor;
+  Color? _color;
+  HSVColor? _hsvColor;
 
   FocusNode _focus = FocusNode();
-  TextEditingController _hexController;
-  String _lastValidHex; // Takes _hexController value only if its length is either 6 or 7.
+  TextEditingController? _hexController;
+  String? _lastValidHex; // Takes _hexController value only if its length is either 6 or 7.
 
-  _setColor(Color value, [HSVColor hsvColor]) {
+  _setColor(Color value, [HSVColor? hsvColor]) {
     _setColorWithoutTextfieldUpdate(value, hsvColor);
-    _hexController.text = value.hex;
+    _hexController?.text = value.hex;
   }
 
-  _setColorWithoutTextfieldUpdate(Color value, [HSVColor hsvColor]) {
+  _setColorWithoutTextfieldUpdate(Color value, [HSVColor? hsvColor]) {
     setState(() {
       _color = value;
       _hsvColor = hsvColor ?? HSVColor.fromColor(value);
@@ -103,20 +103,20 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
   @override
   void initState() {
     _color = widget.initialColor;
-    _hsvColor = HSVColor.fromColor(_color);
+    _hsvColor = HSVColor.fromColor(_color!);
     _lastValidHex = widget.initialColor.hex;
     _initHexController();
     super.initState();
   }
 
   _initHexController() {
-    _hexController = TextEditingController(text: _color.hex)
+    _hexController = TextEditingController(text: _color!.hex)
       ..addListener(() {
-        if (_hexController.text != _color.hex) {
-          if(_hexController.text.length == 6 || _hexController.text.length == 7) {
-            _lastValidHex = _hexController.text;
+        if (_hexController!.text != _color!.hex) {
+          if(_hexController!.text.length == 6 || _hexController!.text.length == 7) {
+            _lastValidHex = _hexController!.text;
           }
-          _setColorWithoutTextfieldUpdate(HexColor.fromHex(_lastValidHex));
+          _setColorWithoutTextfieldUpdate(HexColor.fromHex(_lastValidHex!));
         }
       });
   }
@@ -129,7 +129,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
         width: UIConstants.color_picker_area_size,
         height: UIConstants.color_picker_area_size,
         child: ColorPickerArea(
-          _hsvColor,
+          _hsvColor!,
           (color) {
             FocusScope.of(context).unfocus();
             _setColor(color.toColor(), color);
@@ -145,7 +145,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
       quarterTurns: -1,
       child: ColorPickerSlider(
         TrackType.hue,
-        _hsvColor,
+        _hsvColor!,
         (color) {
           FocusScope.of(context).unfocus();
           _setColor(color.toColor(), color);
@@ -232,9 +232,9 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
     }
 
     return [
-      _buildPair('R', _color.red),
-      _buildPair('G', _color.green),
-      _buildPair('B', _color.blue),
+      _buildPair('R', _color?.red ?? 0),
+      _buildPair('G', _color?.green ?? 0),
+      _buildPair('B', _color?.blue ?? 0),
     ];
   }
 

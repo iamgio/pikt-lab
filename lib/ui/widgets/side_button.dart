@@ -7,9 +7,9 @@ import 'package:piktlab/ui/utils/blend_mask.dart';
 class SideButton extends StatefulWidget {
   final Widget icon;
   final double scaleFactor;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
-  const SideButton({Key key, this.icon, this.scaleFactor = 1.0, this.onPressed})
+  const SideButton({Key? key, required this.icon, this.scaleFactor = 1.0, this.onPressed})
       : super(key: key);
 
   @override

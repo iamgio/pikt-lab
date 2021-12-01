@@ -5,15 +5,15 @@ import 'package:piktlab/constants/ui_constants.dart';
 import 'package:piktlab/ui/utils/gradients.dart';
 
 class PrimaryButton extends StatelessWidget {
-  final String text;
-  final IconData icon;
-  final double width;
-  final double height;
-  final Color textColor;
-  final VoidCallback onPressed;
+  final String? text;
+  final IconData? icon;
+  final double? width;
+  final double? height;
+  final Color? textColor;
+  final VoidCallback? onPressed;
 
   const PrimaryButton({
-    Key key,
+    Key? key,
     this.text,
     this.icon,
     this.width,

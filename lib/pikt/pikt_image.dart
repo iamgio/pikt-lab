@@ -9,15 +9,15 @@ class PiktImage extends Object {
 
   final File file;
 
-  int width;
-  int height;
-  List<Pixel> pixels;
+  late int width;
+  late int height;
+  late List<Pixel> pixels;
 
   PiktImage(this.file);
 
   /// Reads and updates image info.
   Future read() async {
-    final image = decodeImage(await file.readAsBytes());
+    final image = decodeImage(await file.readAsBytes())!;
     final List<Pixel> pixels = [];
 
     for (int y = 0; y < image.height; y++) {

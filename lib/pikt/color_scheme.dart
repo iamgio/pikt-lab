@@ -11,10 +11,10 @@ class ColorScheme {
   ColorScheme.read(String path) :
         _properties = Properties.loadString(File(path).readAsStringSync());
 
-  String operator [](String key) => _properties[key];
+  String operator [](String key) => _properties[key]!;
 
   Color getColor(String key) => HexColor.fromHex(this[key]);
-  List<String> get keys => _properties.keys;
+  List<String> get keys => _properties.keys.toList(growable: false);
   String getKeyByValue(value) => keys.firstWhere((element) => this[element] == value);
 }
 

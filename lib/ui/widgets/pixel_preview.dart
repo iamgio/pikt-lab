@@ -12,14 +12,20 @@ class PixelPreview extends StatefulWidget {
   final double scale;
   final bool showGrid;
 
-  const PixelPreview({Key key, this.project, this.pixel, this.scale, this.showGrid}) : super(key: key);
+  const PixelPreview({
+    Key? key,
+    required this.project,
+    required this.pixel,
+    required this.scale,
+    required this.showGrid,
+  }) : super(key: key);
 
   @override
   _PixelPreviewState createState() => _PixelPreviewState();
 }
 
 class _PixelPreviewState extends State<PixelPreview> {
-  Color _color;
+  Color? _color;
 
   @override
   void initState() {

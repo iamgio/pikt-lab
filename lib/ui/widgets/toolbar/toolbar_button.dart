@@ -8,12 +8,12 @@ import 'package:piktlab/ui/utils/overlay.dart';
 class ToolbarButton extends StatefulWidget {
   final Tool tool;
   final bool isIndependentSelection;
-  final Widget icon;
-  final ValueChanged<bool> onSelected;
+  final Widget? icon;
+  final ValueChanged<bool>? onSelected;
 
-  const ToolbarButton({Key key, this.tool, this.isIndependentSelection = false, this.icon, this.onSelected}) : super(key: key);
+  const ToolbarButton({Key? key, required this.tool, this.isIndependentSelection = false, this.icon, this.onSelected}) : super(key: key);
 
-  ToolbarButton.tool({this.tool, this.isIndependentSelection = false, this.onSelected}) :
+  ToolbarButton.tool({required this.tool, this.isIndependentSelection = false, this.onSelected}) :
         icon = SvgPicture.asset('images/toolbar/${tool.svgName}.svg', color: AppColors.toolbar_icon, width: UIConstants.toolbar_icon_size);
 
   @override

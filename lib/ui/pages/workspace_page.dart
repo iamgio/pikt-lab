@@ -15,7 +15,7 @@ import 'package:piktlab/ui/window.dart';
 class WorkspacePage extends StatelessWidget {
   final PiktProject project;
 
-  const WorkspacePage({Key key, this.project}) : super(key: key);
+  const WorkspacePage({Key? key, required this.project}) : super(key: key);
 
   _buildPreview() => Center(
         child: FutureBuilder(
@@ -26,7 +26,7 @@ class WorkspacePage extends StatelessWidget {
         ),
       );
 
-  _buildTitleBarIcon({IconData icon, VoidCallback onPressed}) => IconButton(
+  _buildTitleBarIcon({IconData? icon, VoidCallback? onPressed}) => IconButton(
     icon: Icon(icon),
     color: AppColors.workspace_title_bar_icon,
     iconSize: UIConstants.workspace_title_bar_icon_size,

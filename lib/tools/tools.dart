@@ -54,14 +54,14 @@ abstract class Tool extends ChangeNotifier {
     notifyListeners();
   }
 
-  String get svgName;
+  String? get svgName;
 
   void onToggle() {}
 }
 
 class Freehand extends Tool {
   @override
-  String get svgName => null;
+  String? get svgName => null;
 }
 
 class Pencil extends Tool {

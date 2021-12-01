@@ -18,7 +18,7 @@ class PiktLabApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: lang['title'],
+      title: lang['title']!,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: AppColors.landing_bg_gradient_1,

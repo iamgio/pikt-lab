@@ -6,7 +6,7 @@ import 'package:piktlab/model/recent_project.dart';
 class RecentProjectButton extends StatelessWidget {
   final RecentProject project;
 
-  const RecentProjectButton({Key key, this.project}) : super(key: key);
+  const RecentProjectButton({Key? key, required this.project}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

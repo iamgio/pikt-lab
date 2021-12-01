@@ -9,7 +9,7 @@ import 'package:supercharged/supercharged.dart';
 class SettingsBox extends StatefulWidget {
   final PiktSettings settings;
 
-  const SettingsBox({Key key, this.settings}) : super(key: key);
+  const SettingsBox({Key? key, required this.settings}) : super(key: key);
 
   @override
   _SettingsBoxState createState() => _SettingsBoxState();
@@ -17,8 +17,8 @@ class SettingsBox extends StatefulWidget {
 
 class _SettingsBoxState extends State<SettingsBox> with AnimationMixin {
 
-  Animation<double> _blur;
-  Animation<double> _size;
+  Animation<double>? _blur;
+  Animation<double>? _size;
 
   @override
   void initState() {
@@ -37,11 +37,11 @@ class _SettingsBoxState extends State<SettingsBox> with AnimationMixin {
       child: OverlaysCloser(
         controller: controller,
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: _blur.value, sigmaY: _blur.value),
+          filter: ImageFilter.blur(sigmaX: _blur!.value, sigmaY: _blur!.value),
           child: Center(
             child: Container(
-              width: _size.value,
-              height: _size.value,
+              width: _size!.value,
+              height: _size!.value,
               color: Colors.red,
             ),
           ),

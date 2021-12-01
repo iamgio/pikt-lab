@@ -5,7 +5,7 @@ class ScrollListener extends StatelessWidget {
   final void Function(PointerScrollEvent event) onScroll;
   final Widget child;
 
-  const ScrollListener({Key key, @required this.onScroll, @required this.child}) : super(key: key);
+  const ScrollListener({Key? key, required this.onScroll, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

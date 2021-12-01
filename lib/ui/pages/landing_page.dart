@@ -14,7 +14,7 @@ import 'package:piktlab/ui/widgets/side_button.dart';
 import 'package:piktlab/ui/window.dart';
 
 class LandingPage extends StatelessWidget {
-  const LandingPage({Key key}) : super(key: key);
+  const LandingPage({Key? key}) : super(key: key);
 
   _buildPrimaryButton(MediaQueryData mediaQuery) => PrimaryButton(
         text: lang['landing.newscript'],
@@ -51,7 +51,7 @@ class LandingPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            lang['landing.or'],
+            lang['landing.or']!,
             style: TextStyle(
               fontSize: UIConstants.landing_open_font_size,
               color: AppColors.landing_open.withOpacity(UIConstants.landing_or_opacity),
@@ -60,7 +60,7 @@ class LandingPage extends StatelessWidget {
           TextButton(
             onPressed: () {},
             child: Text(
-              lang['landing.open'],
+              lang['landing.open']!,
               style: TextStyle(fontSize: UIConstants.landing_open_font_size, color: AppColors.landing_open, fontWeight: FontWeight.bold),
             ),
           ),

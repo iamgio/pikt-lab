@@ -11,7 +11,7 @@ class Window {
   /// Sets custom window via bitsdojo_window
   static void init() {
     doWhenWindowReady(() {
-      appWindow.title = lang['title'];
+      appWindow.title = lang['title']!;
       appWindow.size = UIConstants.window_size;
       appWindow.minSize = UIConstants.window_min_size;
       appWindow.alignment = Alignment.center;
@@ -24,9 +24,9 @@ class Window {
 
 class WindowFrame extends StatelessWidget {
 
-  final Widget child;
+  final Widget? child;
 
-  WindowFrame({Key key, this.child}) : super(key: key);
+  WindowFrame({Key? key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class WindowFrame extends StatelessWidget {
           color: Colors.transparent,
           child: _WindowTitleBar(),
         ),
-        child,
+        if(child != null) child!,
       ],
     );
   }

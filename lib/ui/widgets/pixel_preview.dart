@@ -66,7 +66,7 @@ class _PixelPreviewState extends State<PixelPreview> {
         height: UIConstants.canvas_pixel_size * widget.scale,
         decoration: BoxDecoration(
           color: _color,
-          border: widget.showGrid ? Border.all(color: AppColors.grid, width: widget.scale / UIConstants.canvas_grid_factor) : Border.fromBorderSide(BorderSide.none),
+          border: widget.showGrid ? Border.all(color: AppColors.grid, width: widget.scale / UIConstants.canvas_grid_factor) : const Border.fromBorderSide(BorderSide.none),
         ),
       ),
     );

@@ -41,7 +41,7 @@ class _ToolbarColorPickerState extends State<ToolbarColorPicker> {
     return CloseableOverlay().buildOverlay(
       context,
       child: picker,
-      offset: Offset(UIConstants.color_picker_offset_x, 0),
+      offset: const Offset(UIConstants.color_picker_offset_x, 0),
     );
   }
 
@@ -52,7 +52,7 @@ class _ToolbarColorPickerState extends State<ToolbarColorPicker> {
       children: [
         RawMaterialButton(
           fillColor: _color,
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           child: Container(
             width: UIConstants.toolbar_color_picker_size,
             height: UIConstants.toolbar_color_picker_size,
@@ -82,7 +82,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
   Color? _color;
   HSVColor? _hsvColor;
 
-  FocusNode _focus = FocusNode();
+  final FocusNode _focus = FocusNode();
   TextEditingController? _hexController;
   String? _lastValidHex; // Takes _hexController value only if its length is either 6 or 7.
 
@@ -121,11 +121,11 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
       });
   }
 
-  TextStyle get _textStyle => TextStyle(
+  TextStyle get _textStyle => const TextStyle(
         color: AppColors.color_picker_text,
       );
 
-  _buildPickerArea() => Container(
+  _buildPickerArea() => SizedBox(
         width: UIConstants.color_picker_area_size,
         height: UIConstants.color_picker_area_size,
         child: ColorPickerArea(
@@ -138,7 +138,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
         ),
       );
 
-  _buildSlider() => Container(
+  _buildSlider() => SizedBox(
     width: UIConstants.color_picker_slider_width,
     height: UIConstants.color_picker_area_size + UIConstants.color_picker_slider_height,
     child: RotatedBox(
@@ -198,7 +198,7 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
               width: UIConstants.color_picker_hex_width,
               child: _buildHexField(),
             ),
-            SizedBox(height: UIConstants.color_picker_preview_height),
+            const SizedBox(height: UIConstants.color_picker_preview_height),
             Container(
               width: UIConstants.color_picker_preview_width,
               height: UIConstants.color_picker_preview_height,
@@ -242,12 +242,12 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
         children: [
           _buildPickerArea(),
           _buildSlider(),
-          SizedBox(width: UIConstants.color_picker_horizontal_spacing),
+          const SizedBox(width: UIConstants.color_picker_horizontal_spacing),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildHex(),
-              Spacer(),
+              const Spacer(),
               ..._buildRGBValues(),
             ],
           ),
@@ -261,12 +261,12 @@ class _ColorPickerOverlayState extends State<ColorPickerOverlay> {
       color: Colors.transparent,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(UIConstants.color_picker_radius),
-        child: Container(
+        child: SizedBox(
           height: UIConstants.color_picker_area_size + UIConstants.color_picker_slider_height * 2,
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: UIConstants.color_picker_blur, sigmaY: UIConstants.color_picker_blur),
             child: Container(
-              padding: EdgeInsets.all(UIConstants.color_picker_padding),
+              padding: const EdgeInsets.all(UIConstants.color_picker_padding),
               color: AppColors.color_picker,
               child: _buildRGBPicker(),
             ),

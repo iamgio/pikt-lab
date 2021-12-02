@@ -18,7 +18,7 @@ class Panel extends StatelessWidget {
           children: [
             Text(
               project.name,
-              style: TextStyle(
+              style: const TextStyle(
                 color: AppColors.panel_text,
                 fontSize: UIConstants.panel_title_font_size,
                 fontWeight: FontWeight.bold,
@@ -26,12 +26,12 @@ class Panel extends StatelessWidget {
             ),
             MaterialButton(
               onPressed: () {},
-              shape: CircleBorder(),
+              shape: const CircleBorder(),
               color: AppColors.workspace_primary,
               splashColor: AppColors.panel_run.withOpacity(UIConstants.panel_run_highlight_opacity),
               highlightColor: AppColors.panel_run.withOpacity(UIConstants.panel_run_highlight_opacity),
-              padding: EdgeInsets.all(UIConstants.panel_run_padding),
-              child: Icon(Icons.play_arrow, color: AppColors.panel_run),
+              padding: const EdgeInsets.all(UIConstants.panel_run_padding),
+              child: const Icon(Icons.play_arrow, color: AppColors.panel_run),
             ),
           ],
         ),

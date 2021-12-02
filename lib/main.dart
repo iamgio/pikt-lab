@@ -10,11 +10,14 @@ import 'package:piktlab/ui/pages/workspace_page.dart';
 import 'package:piktlab/ui/window.dart';
 
 void main() {
-  runApp(PiktLabApp());
+  runApp(const PiktLabApp());
   Window.init(); // Custom window
 }
 
 class PiktLabApp extends StatelessWidget {
+  
+  const PiktLabApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

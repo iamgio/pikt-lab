@@ -14,7 +14,6 @@ import 'package:piktlab/ui/widgets/keys/key_combination.dart';
 import 'package:piktlab/ui/widgets/pixel_preview.dart';
 
 class PiktImagePreview extends StatefulWidget {
-
   final PiktProject project;
 
   const PiktImagePreview({Key? key, required this.project}) : super(key: key);
@@ -27,8 +26,8 @@ class _PiktImagePreviewState extends State<PiktImagePreview> {
 
   PiktImage get _image => widget.project.image;
 
-  FocusNode _focus = FocusNode();
-  ScrollController _scrollController = ScrollController();
+  final FocusNode _focus = FocusNode();
+  final ScrollController _scrollController = ScrollController();
 
   bool _showGrid = false;
   bool _isCtrlDown = false;

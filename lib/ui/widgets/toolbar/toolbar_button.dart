@@ -13,8 +13,8 @@ class ToolbarButton extends StatefulWidget {
 
   const ToolbarButton({Key? key, required this.tool, this.isIndependentSelection = false, this.icon, this.onSelected}) : super(key: key);
 
-  ToolbarButton.tool({required this.tool, this.isIndependentSelection = false, this.onSelected}) :
-        icon = SvgPicture.asset('images/toolbar/${tool.svgName}.svg', color: AppColors.toolbar_icon, width: UIConstants.toolbar_icon_size);
+  ToolbarButton.tool({Key? key, required this.tool, this.isIndependentSelection = false, this.onSelected}) :
+        icon = SvgPicture.asset('images/toolbar/${tool.svgName}.svg', color: AppColors.toolbar_icon, width: UIConstants.toolbar_icon_size), super(key: key);
 
   @override
   _ToolbarButtonState createState() => _ToolbarButtonState();
@@ -73,8 +73,8 @@ class _ToolbarButtonState extends State<ToolbarButton> {
                 closeOverlays(context);
               });
             },
-            padding: EdgeInsets.all(UIConstants.toolbar_icon_padding),
-            shape: CircleBorder(),
+            padding: const EdgeInsets.all(UIConstants.toolbar_icon_padding),
+            shape: const CircleBorder(),
             hoverColor: AppColors.toolbar_icon.withOpacity(UIConstants.toolbar_icon_hover_opacity),
             child: widget.icon,
           ),

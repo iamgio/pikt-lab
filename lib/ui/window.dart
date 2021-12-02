@@ -19,7 +19,7 @@ class Window {
     });
   }
 
-  static double get titleBarHeight => appWindow.titleBarHeight + 3;
+  static double get titleBarHeight => appWindow.titleBarHeight > 0 ? appWindow.titleBarHeight + 3 : 32;
 }
 
 class WindowFrame extends StatelessWidget {

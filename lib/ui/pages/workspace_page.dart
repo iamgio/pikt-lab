@@ -61,15 +61,15 @@ class WorkspacePage extends StatelessWidget {
       child: OverlaysCloser(
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Toolbar(),
-              SizedBox(width: UIConstants.canvas_spacing_left),
+              const Toolbar(),
+              const SizedBox(width: UIConstants.canvas_spacing_left),
               _buildPreview(),
               Padding(
-                padding: EdgeInsets.only(left: UIConstants.panel_padding_left, top: UIConstants.panel_padding_top),
+                padding: const EdgeInsets.only(left: UIConstants.panel_padding_left, top: UIConstants.panel_padding_top),
                 child: Panel(project: project),
               ),
             ],

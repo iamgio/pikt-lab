@@ -15,16 +15,16 @@ class Toolbar extends StatefulWidget {
 
 class _ToolbarState extends State<Toolbar> {
 
-  _buildButtonSpacer()  => SizedBox(height: UIConstants.toolbar_buttons_spacing);
-  _buildSectionSpacer() => SizedBox(height: UIConstants.toolbar_sections_spacing);
+  _buildButtonSpacer()  => const SizedBox(height: UIConstants.toolbar_buttons_spacing);
+  _buildSectionSpacer() => const SizedBox(height: UIConstants.toolbar_sections_spacing);
 
   List<Widget> _buildButtons() {
     return [
       ToolbarButton.tool(tool: Pencil()),
       _buildButtonSpacer(),
-      SizedBox(height: 5),
-      ToolbarColorPicker(),
-      SizedBox(height: 5),
+      const SizedBox(height: 5),
+      const ToolbarColorPicker(),
+      const SizedBox(height: 5),
       _buildButtonSpacer(),
       ToolbarButton.tool(tool: Eraser()),
       _buildButtonSpacer(),
@@ -45,7 +45,7 @@ class _ToolbarState extends State<Toolbar> {
       color: AppColors.workspace_toolbar,
       child: ListView(
         children: [
-          SizedBox(height: UIConstants.toolbar_margin_top),
+          const SizedBox(height: UIConstants.toolbar_margin_top),
           ..._buildButtons(),
         ],
       ),

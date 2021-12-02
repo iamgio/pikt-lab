@@ -27,13 +27,13 @@ class LandingPage extends StatelessWidget {
   _buildSideButtons() => Align(
         alignment: Alignment.topRight,
         child: Padding(
-          padding: EdgeInsets.only(right: UIConstants.side_button_padding_right),
+          padding: const EdgeInsets.only(right: UIConstants.side_button_padding_right),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: Window.titleBarHeight),
               SideButton(
-                icon: Icon(Icons.settings),
+                icon: const Icon(Icons.settings),
                 onPressed: () {},
               ),
               SideButton(
@@ -61,18 +61,18 @@ class LandingPage extends StatelessWidget {
             onPressed: () {},
             child: Text(
               lang['landing.open']!,
-              style: TextStyle(fontSize: UIConstants.landing_open_font_size, color: AppColors.landing_open, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: UIConstants.landing_open_font_size, color: AppColors.landing_open, fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(width: 2),
-          Icon(Icons.folder_rounded, color: AppColors.landing_open, size: UIConstants.landing_open_icon_size),
+          const SizedBox(width: 2),
+          const Icon(Icons.folder_rounded, color: AppColors.landing_open, size: UIConstants.landing_open_icon_size),
         ],
       );
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    return new UIPage(
+    return UIPage(
       decoration: BoxDecoration(
         gradient: Gradients.landingBgGradient,
       ),
@@ -88,7 +88,7 @@ class LandingPage extends StatelessWidget {
                 ),
                 SizedBox(height: mediaQuery.size.height / UIConstants.landing_vertical_spacing_factor),
                 _buildPrimaryButton(mediaQuery),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 _buildOpenButton(),
               ],
             ),

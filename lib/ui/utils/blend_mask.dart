@@ -8,7 +8,7 @@ class BlendMask extends SingleChildRenderObjectWidget {
   final BlendMode _blendMode;
   final double _opacity;
 
-  BlendMask({
+  const BlendMask({
     required BlendMode blendMode,
     double opacity = 1.0,
     Key? key,

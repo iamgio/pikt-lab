@@ -25,13 +25,13 @@ class _SettingsBoxState extends State<SettingsBox> with AnimationMixin {
     controller.curve(Curves.easeInOut);
     _blur = 0.0.tweenTo(15.0).animatedBy(controller);
     _size = 0.0.tweenTo(100.0).animatedBy(controller);
-    controller.play(duration: Duration(milliseconds: 80));
+    controller.play(duration: const Duration(milliseconds: 80));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: OverlaysCloser(

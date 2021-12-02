@@ -7,7 +7,7 @@ List<OverlayEntry> closeableOverlays = [];
 closeOverlays(BuildContext context) {
   closeableOverlays.forEach((overlay) => overlay.remove());
   closeableOverlays.clear();
-  if (context != null) FocusScope.of(context).requestFocus();
+  FocusScope.of(context).requestFocus();
 }
 
 /// Utility class that builds an [OverlayEntry] and registers it, so that when the user clicks outside its child, the overlay gets removed.

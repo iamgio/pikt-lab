@@ -61,9 +61,9 @@ class PrimaryButton extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(icon, color: textColor),
-                      SizedBox(width: UIConstants.primary_button_icon_text_spacing),
+                      const SizedBox(width: UIConstants.primary_button_icon_text_spacing),
                       _buildText(),
-                      SizedBox(width: UIConstants.primary_button_icon_text_spacing * 2),
+                      const SizedBox(width: UIConstants.primary_button_icon_text_spacing * 2),
                     ],
                   ),
           ),

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/cupertino.dart';
 
 /// Some string and numeric constants for the UI.
@@ -7,8 +9,8 @@ class UIConstants {
 
   static const font_family = 'Karla';
 
-  static const window_size = const Size(1280, 720);
-  static const window_min_size = const Size(768, 432);
+  static const window_size = Size(1280, 720);
+  static const window_min_size = Size(768, 432);
 
   // Landing page
 

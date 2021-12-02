@@ -11,12 +11,12 @@ class RecentProjectsPanel extends StatelessWidget {
   const RecentProjectsPanel({Key? key, required this.projects}) : super(key: key);
 
   _buildTitle() => Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
             left: UIConstants.recent_projects_padding,
             top: UIConstants.recent_projects_padding),
         child: Text(
           lang['recent_projects']!.toUpperCase(),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: UIConstants.recent_projects_header_font_size,
             color: AppColors.landing_recent_projects_text,
             fontWeight: FontWeight.bold,
@@ -40,8 +40,7 @@ class RecentProjectsPanel extends StatelessWidget {
           ListView(
             children: [
               _buildTitle(),
-              SizedBox(
-                  height: UIConstants.primary_button_icon_text_spacing * 3),
+              const SizedBox(height: UIConstants.primary_button_icon_text_spacing * 3),
               ...List.generate(projects.length,
                   (index) => RecentProjectButton(project: projects[index])),
             ],

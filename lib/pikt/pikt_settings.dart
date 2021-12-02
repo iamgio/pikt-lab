@@ -12,7 +12,7 @@ class PiktGlobalSettings extends PiktSettings {
 
   @override
   String get commandLineText {
-    final buffer = new StringBuffer();
+    final buffer = StringBuffer();
 
     if(piktJar != null) buffer.write('$piktJar ');
     if(jvmCompiler != null) buffer.write(' -Djvmcompiler=$jvmCompiler ');
@@ -31,7 +31,7 @@ class PiktProjectSettings extends PiktSettings {
 
   @override
   String get commandLineText {
-    final buffer = new StringBuffer();
+    final buffer = StringBuffer();
 
     if(colorScheme != null) buffer.write(' -Dcolors=$colorScheme ');
     if(compilationTargets != null) {
